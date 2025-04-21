@@ -27,8 +27,8 @@ Public Class GameForm
 
     Private jumlahLangkah As Integer = 0
 
-    Private kartuTerbukaCounter As Integer = 0
-    Private maxTerbukaTantangan As Integer = 6 ' batas berapa kali membalik kartu sebelum diacak ulang
+    'Private kartuTerbukaCounter As Integer = 0
+    'Private maxTerbukaTantangan As Integer = 6 ' 
 
 
     'Private isGameOver As Boolean = False
@@ -83,7 +83,7 @@ Public Class GameForm
 
 
     Private Sub InisialisasiPapan()
-        ' Load gambar pasangan
+
         gambarList.Clear()
         For i = 1 To totalPasangan
             Dim img As Image = Image.FromFile($"images\img ({i}).png")
@@ -94,11 +94,14 @@ Public Class GameForm
         gambarList = gambarList.OrderBy(Function() random.Next()).ToList()
 
         TableLayoutPanel1.Controls.Clear()
+        'TableLayoutPanel1.RowCount 
         TableLayoutPanel1.RowCount = jumlahBaris
+
         TableLayoutPanel1.ColumnCount = jumlahKolom
         TableLayoutPanel1.RowStyles.Clear()
         TableLayoutPanel1.ColumnStyles.Clear()
         TableLayoutPanel1.Dock = DockStyle.Fill
+
 
         ReDim kartuArray(jumlahBaris * jumlahKolom - 1)
 
@@ -112,11 +115,13 @@ Public Class GameForm
         For i = 0 To jumlahBaris * jumlahKolom - 1
             Dim pb As New PictureBox()
             pb.Dock = DockStyle.Fill
-            pb.SizeMode = PictureBoxSizeMode.Zoom ' Mengatur gambar untuk tetap proporsional
+            pb.SizeMode = PictureBoxSizeMode.Zoom
+
             pb.Image = Image.FromFile("images\cover.png")
+
             pb.Tag = gambarList(i)
             AddHandler pb.Click, AddressOf KartuKlik
-            AddHandler pb.Paint, AddressOf PictureBox_Paint ' Menambahkan event Paint untuk border
+            AddHandler pb.Paint, AddressOf PictureBox_Paint
             kartuArray(i) = pb
             TableLayoutPanel1.Controls.Add(pb, i Mod jumlahKolom, i \ jumlahKolom)
         Next
@@ -124,12 +129,12 @@ Public Class GameForm
 
     Private Sub PictureBox_Paint(sender As Object, e As PaintEventArgs)
         Dim pb As PictureBox = CType(sender, PictureBox)
-        Dim borderColor As Color = Color.Black ' Warna border
-        Dim borderWidth As Integer = 3 ' Lebar border
-        Dim rect As New Rectangle(0, 0, pb.Width - 1, pb.Height - 1) ' Rectangle untuk border
 
-        ' Menggambar border di sekitar PictureBox
+        Dim borderColor As Color = Color.Black
+        Dim borderWidth As Integer = 3
+        Dim rect As New Rectangle(0, 0, pb.Width - 1, pb.Height - 1)
         e.Graphics.DrawRectangle(New Pen(borderColor, borderWidth), rect)
+
     End Sub
 
 
@@ -147,14 +152,18 @@ Public Class GameForm
         End If
 
         kartuTerbuka.Add(pb)
+        'mode
 
         If kartuTerbuka.Count = 2 Then
             jumlahLangkah += 1
-            lblLangkah.Text = "Langkah: " & jumlahLangkah ' Update label langkah
+            lblLangkah.Text = "Langkah: " & jumlahLangkah
             isProcessing = True
             kartuTimer.Interval = CInt(waktuTunggu * 1000)
             kartuTimer.Start()
         End If
+
+        'mode
+
         'If ModePermainan = "Tantangan" Then
         '    kartuTerbukaCounter += 1
         '    If kartuTerbukaCounter >= maxTerbukaTantangan Then
@@ -171,10 +180,8 @@ Public Class GameForm
         kartuTimer.Stop()
 
         If kartuTerbuka(0).Tag.Equals(kartuTerbuka(1).Tag) Then
-            ' Cocok
             kartuSelesai.AddRange(kartuTerbuka)
         Else
-            ' Tidak cocok → flip balik
             For Each k In kartuTerbuka
                 k.Image = Image.FromFile("images\cover.png")
             Next
@@ -191,7 +198,6 @@ Public Class GameForm
                             $"Langkah: {jumlahLangkah}" & vbCrLf &
                             $"Skor: {skor}", "Permainan Selesai", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-            ' Kembali ke GameModeForm
             'Dim skor As Integer = HitungSkor()
             SimpanSkor(NamaPemain, skor, TingkatKesulitan, ModePermainan)
 
@@ -237,26 +243,21 @@ Public Class GameForm
         Dim waktuDetik As Integer = CInt(waktuMain.TotalSeconds)
         Dim skor As Integer = CInt((1000 * faktorKesulitan) - (jumlahLangkah * 5) - (waktuDetik * 2))
 
-        If skor < 0 Then skor = 0 ' Biar tidak negatif
+        If skor < 0 Then skor = 0
         Return skor
     End Function
 
     Public Sub SimpanSkor(nama As String, skor As Integer, tingkatKesulitan As String, modePermainan As String)
-        ' Menentukan lokasi penyimpanan file JSON
+
         Dim path As String = "leaderboard.json"
 
-
-        ' List untuk menampung skor-skor yang ada
         Dim daftarSkor As New List(Of CreateJson)
 
-        ' Jika file JSON sudah ada, baca isinya
         If File.Exists(path) Then
-            ' Membaca isi file JSON dan mengonversinya ke list skor
             Dim jsonString = File.ReadAllText(path)
             daftarSkor = JsonSerializer.Deserialize(Of List(Of CreateJson))(jsonString)
         End If
 
-        ' Tambahkan entri skor baru
         daftarSkor.Add(New CreateJson With {
         .Nama = nama,
         .Skor = skor,
@@ -264,7 +265,6 @@ Public Class GameForm
         .ModePermainan = modePermainan
     })
 
-        ' Menyimpan ulang daftar skor ke file JSON
         Dim output = JsonSerializer.Serialize(daftarSkor, New JsonSerializerOptions With {.WriteIndented = True})
         File.WriteAllText(path, output)
     End Sub
