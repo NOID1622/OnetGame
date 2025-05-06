@@ -6,10 +6,12 @@ Public Class GameForm
     Public TingkatKesulitan As String
     Public ModePermainan As String
     Public NamaPemain As String
+
     Private totalPasangan As Integer
     Private jumlahKolom As Integer
     Private jumlahBaris As Integer
     Private waktuTunggu As Double
+
     Private gambarList As New List(Of Image)
     Private kartuArray() As PictureBox
     Private kartuTerbuka As New List(Of PictureBox)
@@ -152,7 +154,6 @@ Public Class GameForm
         End If
 
         kartuTerbuka.Add(pb)
-        'mode
 
         If kartuTerbuka.Count = 2 Then
             jumlahLangkah += 1
@@ -171,9 +172,9 @@ Public Class GameForm
         '        'AcakUlangKartu()
         'End If
         'End If
-        If ModePermainan = "Waktu" Then
+        'If ModePermainan = "Waktu" Then
 
-        End If
+        'End If
     End Sub
 
     Private Sub KartuTimer_Tick(sender As Object, e As EventArgs)
@@ -230,6 +231,9 @@ Public Class GameForm
 
 
     Private Function HitungSkor() As Integer
+
+        'Skor = (1000 × TingkatKesulitan) - (JumlahLangkah × 5) - (WaktuDetik × 2)
+
         Dim faktorKesulitan As Double
         Select Case TingkatKesulitan
             Case "Mudah"
@@ -243,13 +247,12 @@ Public Class GameForm
         Dim waktuDetik As Integer = CInt(waktuMain.TotalSeconds)
         Dim skor As Integer = CInt((1000 * faktorKesulitan) - (jumlahLangkah * 5) - (waktuDetik * 2))
 
-        If skor < 0 Then skor = 0
         Return skor
     End Function
 
     Public Sub SimpanSkor(nama As String, skor As Integer, tingkatKesulitan As String, modePermainan As String)
 
-        Dim path As String = "leaderboard.json"
+        Dim path As String = "resources/leaderboard.json"
 
         Dim daftarSkor As New List(Of CreateJson)
 
@@ -257,6 +260,9 @@ Public Class GameForm
             Dim jsonString = File.ReadAllText(path)
             daftarSkor = JsonSerializer.Deserialize(Of List(Of CreateJson))(jsonString)
         End If
+
+        'daftarSkor.Add(New CreateJson With {
+        '   .Nama = "Tes"})
 
         daftarSkor.Add(New CreateJson With {
         .Nama = nama,

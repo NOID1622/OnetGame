@@ -33,11 +33,11 @@ Partial Class MainMenuForm
         ' 
         Label1.AutoSize = True
         Label1.Font = New Font("Segoe UI Semibold", 36F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label1.Location = New Point(352, 59)
+        Label1.Location = New Point(226, 43)
         Label1.Name = "Label1"
-        Label1.Size = New Size(268, 81)
+        Label1.Size = New Size(515, 81)
         Label1.TabIndex = 0
-        Label1.Text = "O . N E T"
+        Label1.Text = "MEMORY PUZZLE"
         ' 
         ' strBtn
         ' 

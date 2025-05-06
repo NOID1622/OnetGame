@@ -7,14 +7,12 @@ Public Class ScoreForm
     End Sub
 
     Private Sub LoadLeaderboard()
-        Dim path As String = "leaderboard.json"
+        Dim path As String = "resources/leaderboard.json"
 
         If File.Exists(path) Then
             Dim jsonString = File.ReadAllText(path)
             Dim daftarSkor As List(Of CreateJson) = JsonSerializer.Deserialize(Of List(Of CreateJson))(jsonString)
             DataGridView1.DataSource = daftarSkor
-        Else
-            MessageBox.Show("Leaderboard tidak ditemukan.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning)
         End If
         DataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
         DataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill

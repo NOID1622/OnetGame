@@ -21,6 +21,13 @@
         Me.Hide()
     End Sub
 
+    Private Sub setBtn_Click(sender As Object, e As EventArgs) Handles setBtn.Click
+        'Dim settForm As New SettingForm()
+        'settForm.Show()
+        'Me.Hide()
+
+    End Sub
+
     '
     'lbl
     'Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
