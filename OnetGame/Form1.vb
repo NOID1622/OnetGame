@@ -1,9 +1,12 @@
 ﻿Public Class MainMenuForm
 
-    Private Sub MainMenuForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.Icon = New Icon("images\icon.ico")
 
+    Dim originalSizes As New Dictionary(Of Button, Size)
+
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ApplyButtonHoverEffects(Me)
     End Sub
+
 
     Private Sub strBtn_Click(sender As Object, e As EventArgs) Handles strBtn.Click
         Dim gmForm As New GameModeForm

@@ -2,7 +2,7 @@
 Imports System.IO
 Public Class ScoreForm
     Private Sub LeaderboardForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        ApplyButtonHoverEffects(Me)
         LoadLeaderboard()
     End Sub
 

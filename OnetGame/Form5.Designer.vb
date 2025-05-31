@@ -49,9 +49,11 @@ Partial Class SettingForm
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(253), CByte(246), CByte(236))
+        BackgroundImage = My.Resources.Resources.StarsAtmosphere_Portrait3
         ClientSize = New Size(982, 553)
         Controls.Add(Button2)
         Controls.Add(Button1)
+        ForeColor = SystemColors.ControlText
         Name = "SettingForm"
         StartPosition = FormStartPosition.CenterScreen
         Text = "Form5"

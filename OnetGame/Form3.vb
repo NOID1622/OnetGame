@@ -35,7 +35,8 @@ Public Class GameForm
 
     'Private isGameOver As Boolean = False
     Private Sub GameForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.Icon = New Icon("images\icon.ico")
+        ApplyButtonHoverEffects(Me)
+        'Me.Icon = New Icon("images\icon.ico")
 
         Select Case TingkatKesulitan
             Case "Mudah"

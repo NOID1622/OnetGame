@@ -31,7 +31,9 @@ Partial Class ScoreForm
         ' Label1
         ' 
         Label1.AutoSize = True
+        Label1.BackColor = Color.Transparent
         Label1.Font = New Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label1.ForeColor = Color.Transparent
         Label1.Location = New Point(358, 31)
         Label1.Name = "Label1"
         Label1.Size = New Size(262, 54)
@@ -45,21 +47,27 @@ Partial Class ScoreForm
         DataGridView1.AllowUserToResizeColumns = False
         DataGridView1.AllowUserToResizeRows = False
         DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridView1.Location = New Point(12, 89)
+        DataGridView1.Location = New Point(12, 88)
         DataGridView1.Name = "DataGridView1"
         DataGridView1.ReadOnly = True
         DataGridView1.RowHeadersWidth = 51
-        DataGridView1.Size = New Size(958, 352)
+        DataGridView1.Size = New Size(944, 326)
         DataGridView1.TabIndex = 1
         ' 
         ' btnKembali
         ' 
-        btnKembali.BackColor = Color.FromArgb(CByte(231), CByte(76), CByte(60))
+        btnKembali.BackColor = Color.Transparent
+        btnKembali.BackgroundImage = My.Resources.Resources.Conquest_Nameplate_Red
+        btnKembali.BackgroundImageLayout = ImageLayout.Stretch
+        btnKembali.FlatAppearance.BorderSize = 0
+        btnKembali.FlatAppearance.MouseDownBackColor = Color.Transparent
+        btnKembali.FlatAppearance.MouseOverBackColor = Color.Transparent
+        btnKembali.FlatStyle = FlatStyle.Flat
         btnKembali.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        btnKembali.ForeColor = Color.White
-        btnKembali.Location = New Point(833, 471)
+        btnKembali.ForeColor = Color.Snow
+        btnKembali.Location = New Point(764, 476)
         btnKembali.Name = "btnKembali"
-        btnKembali.Size = New Size(126, 54)
+        btnKembali.Size = New Size(192, 65)
         btnKembali.TabIndex = 2
         btnKembali.Text = "Kembali"
         btnKembali.UseVisualStyleBackColor = False
@@ -69,6 +77,7 @@ Partial Class ScoreForm
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(253), CByte(246), CByte(236))
+        BackgroundImage = My.Resources.Resources.StarsAtmosphere_Portrait3
         ClientSize = New Size(982, 553)
         Controls.Add(btnKembali)
         Controls.Add(DataGridView1)

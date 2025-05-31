@@ -36,7 +36,13 @@ Partial Class GameForm
         ' 
         ' btnJeda
         ' 
-        btnJeda.BackColor = Color.FromArgb(CByte(52), CByte(152), CByte(219))
+        btnJeda.BackColor = Color.Transparent
+        btnJeda.BackgroundImage = My.Resources.Resources.glasspanel_orange_PMV
+        btnJeda.BackgroundImageLayout = ImageLayout.Stretch
+        btnJeda.FlatAppearance.BorderSize = 0
+        btnJeda.FlatAppearance.MouseDownBackColor = Color.Transparent
+        btnJeda.FlatAppearance.MouseOverBackColor = Color.Transparent
+        btnJeda.FlatStyle = FlatStyle.Flat
         btnJeda.Font = New Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         btnJeda.ForeColor = Color.White
         btnJeda.Location = New Point(14, 140)
@@ -48,7 +54,13 @@ Partial Class GameForm
         ' 
         ' btnBantuan
         ' 
-        btnBantuan.BackColor = Color.FromArgb(CByte(39), CByte(174), CByte(96))
+        btnBantuan.BackColor = Color.Transparent
+        btnBantuan.BackgroundImage = My.Resources.Resources.glasspanel_orange_PMV
+        btnBantuan.BackgroundImageLayout = ImageLayout.Stretch
+        btnBantuan.FlatAppearance.BorderSize = 0
+        btnBantuan.FlatAppearance.MouseDownBackColor = Color.Transparent
+        btnBantuan.FlatAppearance.MouseOverBackColor = Color.Transparent
+        btnBantuan.FlatStyle = FlatStyle.Flat
         btnBantuan.Font = New Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         btnBantuan.ForeColor = Color.White
         btnBantuan.Location = New Point(14, 189)
@@ -60,7 +72,13 @@ Partial Class GameForm
         ' 
         ' btnMenyerah
         ' 
-        btnMenyerah.BackColor = Color.FromArgb(CByte(231), CByte(76), CByte(60))
+        btnMenyerah.BackColor = Color.Transparent
+        btnMenyerah.BackgroundImage = My.Resources.Resources.glasspanel_orange_PMV
+        btnMenyerah.BackgroundImageLayout = ImageLayout.Stretch
+        btnMenyerah.FlatAppearance.BorderSize = 0
+        btnMenyerah.FlatAppearance.MouseDownBackColor = Color.Transparent
+        btnMenyerah.FlatAppearance.MouseOverBackColor = Color.Transparent
+        btnMenyerah.FlatStyle = FlatStyle.Flat
         btnMenyerah.Font = New Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         btnMenyerah.ForeColor = Color.White
         btnMenyerah.Location = New Point(14, 238)
@@ -109,11 +127,13 @@ Partial Class GameForm
         ' 
         ' Panel1
         ' 
+        Panel1.BackColor = Color.Transparent
         Panel1.Controls.Add(lblLangkah)
         Panel1.Controls.Add(lblTimer)
         Panel1.Controls.Add(btnJeda)
         Panel1.Controls.Add(btnMenyerah)
         Panel1.Controls.Add(btnBantuan)
+        Panel1.ForeColor = Color.White
         Panel1.Location = New Point(794, 13)
         Panel1.Name = "Panel1"
         Panel1.Size = New Size(176, 527)
@@ -134,9 +154,12 @@ Partial Class GameForm
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(253), CByte(246), CByte(236))
+        BackgroundImage = My.Resources.Resources.StarsAtmosphere_Portrait3
+        BackgroundImageLayout = ImageLayout.Stretch
         ClientSize = New Size(982, 553)
         Controls.Add(Panel1)
         Controls.Add(pnlGame)
+        DoubleBuffered = True
         Name = "GameForm"
         StartPosition = FormStartPosition.CenterScreen
         Text = "ONET"
