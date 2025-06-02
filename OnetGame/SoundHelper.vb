@@ -2,11 +2,16 @@
 Imports System.Windows.Forms
 
 Module SoundHelper
-    Private player As AxWindowsMediaPlayer       ' Untuk sound efek tombol
-    Private musicPlayer As AxWindowsMediaPlayer  ' Untuk backsound
-    Private backsoundPath As String = IO.Path.Combine(Application.StartupPath, "backsound.mp3")
+    Private player As AxWindowsMediaPlayer         ' Untuk sound efek tombol
+    Private musicPlayer As AxWindowsMediaPlayer    ' Untuk backsound
+    Private currentMusicPath As String = ""        ' Path musik yang sedang diputar
+    Private currentMusicName As String = ""        ' Nama musik: "main", "timer", dll
 
-    ' Inisialisasi kedua player saat form dibuka (cukup sekali per form utama)
+    ' Path default
+    Private backsoundMain As String = IO.Path.Combine(Application.StartupPath, "sound\backsound.mp3")
+    Private backsoundTimer As String = IO.Path.Combine(Application.StartupPath, "sound\timemode.mp3")
+
+    ' === Inisialisasi player di form utama ===
     Public Sub InitPlayer(form As Form)
         If player Is Nothing Then
             player = New AxWindowsMediaPlayer()
@@ -23,44 +28,82 @@ Module SoundHelper
         End If
     End Sub
 
-    ' Fungsi mainkan suara klik tombol
+    ' === Sound efek tombol ===
     Public Sub PlayButtonSound()
-        Dim soundPath As String = IO.Path.Combine(Application.StartupPath, "sound\buttonclick.mp3")
-        If IO.File.Exists(soundPath) AndAlso player IsNot Nothing Then
-            player.URL = soundPath
-            player.Ctlcontrols.play()
-        End If
+        PlaySoundEffect("sound\buttonclick.mp3")
     End Sub
 
     Public Sub PlayButtonSound2()
-        Dim soundPath As String = IO.Path.Combine(Application.StartupPath, "sound\uibutton.mp3")
-        If IO.File.Exists(soundPath) AndAlso player IsNot Nothing Then
-            player.URL = soundPath
+        PlaySoundEffect("sound\uibutton.mp3")
+    End Sub
+
+    Public Sub PlayButtonSoundtimer()
+        PlaySoundEffect("sound\timemode.mp3")
+    End Sub
+
+    Public Sub PlayButtonSoundtantang()
+        PlaySoundEffect("sound\tantangan.mp3")
+    End Sub
+
+    Private Sub PlaySoundEffect(relativePath As String)
+        Dim fullPath As String = IO.Path.Combine(Application.StartupPath, relativePath)
+        If IO.File.Exists(fullPath) AndAlso player IsNot Nothing Then
+            player.URL = fullPath
             player.Ctlcontrols.play()
         End If
     End Sub
 
-    ' Fungsi memutar musik latar (backsound)
+    ' === BACKSOUND ===
     Public Sub PlayBackgroundMusic()
-        If IO.File.Exists(backsoundPath) AndAlso musicPlayer IsNot Nothing Then
-            musicPlayer.URL = backsoundPath
-            musicPlayer.settings.setMode("loop", True)
-            musicPlayer.settings.volume = 100
-            musicPlayer.Ctlcontrols.play()
+        PlayMusic(backsoundMain, "main")
+    End Sub
+
+    Public Sub PlayTimerModeMusic()
+        PlayMusic(backsoundTimer, "timer")
+    End Sub
+
+    Private Sub PlayMusic(musicPath As String, musicName As String)
+        If IO.File.Exists(musicPath) AndAlso musicPlayer IsNot Nothing Then
+            If currentMusicName <> musicName Then
+                musicPlayer.Ctlcontrols.stop()
+                musicPlayer.URL = musicPath
+                musicPlayer.settings.setMode("loop", True)
+                musicPlayer.settings.volume = 100
+                musicPlayer.Ctlcontrols.play()
+                currentMusicPath = musicPath
+                currentMusicName = musicName
+            End If
         Else
-            MessageBox.Show("File backsound tidak ditemukan di: " & backsoundPath)
+            MessageBox.Show("File musik tidak ditemukan: " & musicPath)
         End If
     End Sub
 
     Public Sub StopBackgroundMusic()
         If musicPlayer IsNot Nothing Then
             musicPlayer.Ctlcontrols.stop()
+            currentMusicName = ""
+            currentMusicPath = ""
+        End If
+    End Sub
+    ' === Atur volume untuk semua audio: musik dan efek ===
+    Public Sub SetGlobalVolume(volume As Integer)
+        volume = Math.Max(0, Math.Min(100, volume)) ' Pastikan dalam rentang 0-100
+
+        If musicPlayer IsNot Nothing Then
+            musicPlayer.settings.volume = volume
+        End If
+
+        If player IsNot Nothing Then
+            player.settings.volume = volume
         End If
     End Sub
 
+    ' Hanya mengatur volume musik latar
     Public Sub SetBackgroundVolume(volume As Integer)
+        volume = Math.Max(0, Math.Min(100, volume))
         If musicPlayer IsNot Nothing Then
-            musicPlayer.settings.volume = Math.Max(0, Math.Min(100, volume))
+            musicPlayer.settings.volume = volume
         End If
     End Sub
+
 End Module

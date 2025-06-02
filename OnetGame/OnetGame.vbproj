@@ -28,7 +28,10 @@
     <None Remove="images2\7.png" />
     <None Remove="images2\8.png" />
     <None Remove="images2\9.png" />
+    <None Remove="sound\backsound.mp3" />
     <None Remove="sound\buttonclick.mp3" />
+    <None Remove="sound\tantangan.mp3" />
+    <None Remove="sound\timemode.mp3" />
   </ItemGroup>
 
   <ItemGroup>
@@ -136,7 +139,16 @@
     <Content Include="images2\9.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="sound\backsound.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="sound\buttonclick.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="sound\tantangan.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="sound\timemode.mp3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -149,6 +161,9 @@
 
   <ItemGroup>
     <PackageReference Include="Guna.UI2.WinForms" Version="2.0.4.7" />
+    <PackageReference Include="MySql.Data" Version="9.3.0" />
+    <PackageReference Include="SQLite" Version="3.13.0" />
+    <PackageReference Include="System.Data.SQLite.Core" Version="1.0.119" />
   </ItemGroup>
 
   <ItemGroup>

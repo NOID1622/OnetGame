@@ -1,13 +1,16 @@
 ﻿Imports System.Text.Json
 Imports System.IO
-
+'Imports MySql.Data.MySqlClient
+Imports System.Data.SQLite
 Public Class GameForm
+    Public mainMenuRef As Form
+
     ' === Variabel Konfigurasi ===
     Private SkinFolder As String = "images"
     Private coverImage As Image
 
     ' === Variabel Informasi Pemain ===
-    Public mainMenuRef As Form
+
     Public TingkatKesulitan As String
     Public ModePermainan As String
     Public NamaPemain As String
@@ -61,7 +64,9 @@ Public Class GameForm
 
 
         KonfigurasiTingkatKesulitan()
+
         kartuTimer.Interval = CInt(waktuTunggu * 250)
+
         AddHandler kartuTimer.Tick, AddressOf KartuTimer_Tick
 
         gameTimer.Interval = 1000
@@ -176,10 +181,6 @@ Public Class GameForm
             coverImage = Image.FromFile(Path.Combine(Application.StartupPath, "images", "cover.png"))
         End If
 
-        ' Tampilkan ke PictureBox jika ada (pastikan kontrolnya bernama PictureBoxCover)
-        'If PictureBoxCover IsNot Nothing Then
-        '    PictureBoxCover.Image = coverImage
-        'End If
     End Sub
 
     ' === Inisialisasi Papan Permainan ===
@@ -314,7 +315,7 @@ Public Class GameForm
 
             Dim scoreForm As New ScoreForm With {.mainMenuRef = mainMenuRef}
             scoreForm.Show()
-            Me.Hide()
+            Me.Close()
         End If
     End Sub
 
@@ -361,11 +362,17 @@ Public Class GameForm
             Next
 
             MessageBox.Show("Permainan berakhir. Coba lagi lain waktu!", "Menyerah")
+' <<<<<<< deadlinemen
+'             Dim gameModeForm As New GameModeForm()
+'             gameModeForm.mainMenuRef = Me.mainMenuRef ' 🟢 Teruskan referensi MainForm!
+'             gameModeForm.Show()
+' =======
 
             'Dim gameModeForm As New GameModeForm()
             'GameModeForm
             GameModeForm.mainMenuRef = mainMenuRef
             GameModeForm.Show()
+' >>>>>>> master
             Me.Close()
         End If
     End Sub
@@ -426,36 +433,68 @@ Public Class GameForm
         Return Math.Max(skor, 0)
     End Function
 
-    Public Sub SimpanSkor(nama As String, skor As Integer, tingkatKesulitan As String, modePermainan As String)
-        Dim path As String = "resources/leaderboard.json"
-        Dim daftarSkor As New List(Of CreateJson)
 
-        If File.Exists(path) Then
-            Dim jsonString = File.ReadAllText(path)
-            daftarSkor = JsonSerializer.Deserialize(Of List(Of CreateJson))(jsonString)
+
+
+
+    Public Sub SimpanSkor(nama As String, skor As Integer, tingkatKesulitan As String, modePermainan As String)
+        Dim dbPath As String = "resources\leaderboard.db"
+        If Not Directory.Exists("resources") Then
+            Directory.CreateDirectory("resources")
         End If
 
-        daftarSkor.Add(New CreateJson With {
-            .Nama = nama,
-            .Skor = skor,
-            .TingkatKesulitan = tingkatKesulitan,
-            .ModePermainan = modePermainan
-        })
+        If Not File.Exists(dbPath) Then
+            SQLiteConnection.CreateFile(dbPath)
+        End If
 
-        Dim output = JsonSerializer.Serialize(daftarSkor, New JsonSerializerOptions With {.WriteIndented = True})
-        File.WriteAllText(path, output)
+        Dim connectionString As String = $"Data Source={dbPath};Version=3;"
+
+        ' Buat tabel jika belum ada
+        Dim createTableQuery As String = "CREATE TABLE IF NOT EXISTS leaderboard (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        nama TEXT,
+        skor INTEGER,
+        tingkat_kesulitan TEXT,
+        mode_permainan TEXT,
+        tanggal TEXT DEFAULT (datetime('now','localtime'))
+    )"
+
+        Using conn As New SQLiteConnection(connectionString)
+            conn.Open()
+
+            ' Pastikan tabel ada
+            Using cmd As New SQLiteCommand(createTableQuery, conn)
+                cmd.ExecuteNonQuery()
+            End Using
+
+            ' Simpan skor hasil permainan
+            Dim insertQuery As String = "INSERT INTO leaderboard (nama, skor, tingkat_kesulitan, mode_permainan) 
+                                     VALUES (@nama, @skor, @tingkat, @mode)"
+
+            Using cmd As New SQLiteCommand(insertQuery, conn)
+                cmd.Parameters.AddWithValue("@nama", nama)
+                cmd.Parameters.AddWithValue("@skor", skor)
+                cmd.Parameters.AddWithValue("@tingkat", tingkatKesulitan)
+                cmd.Parameters.AddWithValue("@mode", modePermainan)
+                cmd.ExecuteNonQuery()
+            End Using
+        End Using
     End Sub
+
+
+
 
     ' === Penanganan Form Close ===
 
     Private Sub GameForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        SoundHelper.PlayBackgroundMusic()
         If isExiting Then
             Application.Exit()
         ElseIf isGoingBackToMenu Then
             ' biarkan tutup
         Else
             e.Cancel = True
-            Me.Hide()
+            Me.Close()
         End If
     End Sub
 

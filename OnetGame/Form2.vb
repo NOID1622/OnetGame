@@ -62,6 +62,7 @@ Public Class GameModeForm
 
     ' === Mode Permainan ===
     Private Sub btnKlasik_Click(sender As Object, e As EventArgs) Handles btnKlasik.Click
+        SoundHelper.PlayBackgroundMusic()
         selectedMode = "Klasik"
         ButtonEffects.AturAktif(btnKlasik, New List(Of Button) From {btnKlasik, btnWaktu, btnTantangan})
     End Sub
@@ -69,11 +70,17 @@ Public Class GameModeForm
     Private Sub btnWaktu_Click(sender As Object, e As EventArgs) Handles btnWaktu.Click
         selectedMode = "Waktu"
         ButtonEffects.AturAktif(btnWaktu, New List(Of Button) From {btnKlasik, btnWaktu, btnTantangan})
+
+        ' Ganti musik ke timer mode
+        SoundHelper.PlayTimerModeMusic()
     End Sub
 
+
     Private Sub btnTantangan_Click(sender As Object, e As EventArgs) Handles btnTantangan.Click
+
         selectedMode = "Tantangan"
         ButtonEffects.AturAktif(btnTantangan, New List(Of Button) From {btnKlasik, btnWaktu, btnTantangan})
+        SoundHelper.PlayButtonSoundtantang()
     End Sub
 
     ' === Kembali ke Main Menu ===
