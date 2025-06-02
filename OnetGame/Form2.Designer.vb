@@ -22,6 +22,7 @@ Partial Class GameModeForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(GameModeForm))
         Label1 = New Label()
         btnMudah = New Button()
         btnSedang = New Button()
@@ -32,6 +33,7 @@ Partial Class GameModeForm
         btnWaktu = New Button()
         btnKlasik = New Button()
         Label2 = New Label()
+        txtNama = New TextBox()
         SuspendLayout()
         ' 
         ' Label1
@@ -109,9 +111,9 @@ Partial Class GameModeForm
         btnStart.FlatAppearance.MouseOverBackColor = Color.Transparent
         btnStart.FlatStyle = FlatStyle.Flat
         btnStart.Font = New Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        btnStart.Location = New Point(336, 448)
+        btnStart.Location = New Point(603, 387)
         btnStart.Name = "btnStart"
-        btnStart.Size = New Size(293, 57)
+        btnStart.Size = New Size(347, 83)
         btnStart.TabIndex = 8
         btnStart.Text = "Mulai"
         btnStart.UseVisualStyleBackColor = False
@@ -194,6 +196,13 @@ Partial Class GameModeForm
         Label2.TabIndex = 10
         Label2.Text = "MODE PERMAINAN"
         ' 
+        ' txtNama
+        ' 
+        txtNama.Location = New Point(131, 408)
+        txtNama.Name = "txtNama"
+        txtNama.Size = New Size(466, 27)
+        txtNama.TabIndex = 11
+        ' 
         ' GameModeForm
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
@@ -202,6 +211,7 @@ Partial Class GameModeForm
         BackgroundImage = My.Resources.Resources.StarsAtmosphere_Portrait3
         BackgroundImageLayout = ImageLayout.Stretch
         ClientSize = New Size(982, 553)
+        Controls.Add(txtNama)
         Controls.Add(Label2)
         Controls.Add(btnKlasik)
         Controls.Add(btnKembali)
@@ -215,6 +225,7 @@ Partial Class GameModeForm
         DoubleBuffered = True
         ForeColor = SystemColors.ControlLightLight
         FormBorderStyle = FormBorderStyle.FixedSingle
+        Icon = CType(resources.GetObject("$this.Icon"), Icon)
         MaximizeBox = False
         Name = "GameModeForm"
         StartPosition = FormStartPosition.CenterScreen
@@ -233,4 +244,5 @@ Partial Class GameModeForm
     Friend WithEvents btnWaktu As Button
     Friend WithEvents btnKlasik As Button
     Friend WithEvents Label2 As Label
+    Friend WithEvents txtNama As TextBox
 End Class

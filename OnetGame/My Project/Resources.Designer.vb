@@ -103,6 +103,16 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
+        Friend ReadOnly Property Hexagons_08_Clamped() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("Hexagons_08_Clamped", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property Play_Button_BlackGlass() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("Play_Button_BlackGlass", resourceCulture)
@@ -143,6 +153,16 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
+        Friend ReadOnly Property StarsAtmosphere_Portrait1() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("StarsAtmosphere_Portrait1", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property StarsAtmosphere_Portrait2() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("StarsAtmosphere_Portrait2", resourceCulture)
@@ -156,6 +176,16 @@ Namespace My.Resources
         Friend ReadOnly Property StarsAtmosphere_Portrait3() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("StarsAtmosphere_Portrait3", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property Stripes_01() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("Stripes_01", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

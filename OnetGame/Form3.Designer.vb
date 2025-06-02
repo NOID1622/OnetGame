@@ -22,6 +22,7 @@ Partial Class GameForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(GameForm))
         btnJeda = New Button()
         btnBantuan = New Button()
         btnMenyerah = New Button()
@@ -93,7 +94,7 @@ Partial Class GameForm
         lblTimer.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
         lblTimer.AutoSize = True
         lblTimer.Font = New Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lblTimer.Location = New Point(3, 29)
+        lblTimer.Location = New Point(14, 28)
         lblTimer.Name = "lblTimer"
         lblTimer.Size = New Size(158, 46)
         lblTimer.TabIndex = 4
@@ -102,7 +103,7 @@ Partial Class GameForm
         ' 
         ' pnlGame
         ' 
-        pnlGame.BackColor = Color.LightGray
+        pnlGame.BackColor = Color.Transparent
         pnlGame.BorderStyle = BorderStyle.FixedSingle
         pnlGame.Controls.Add(TableLayoutPanel1)
         pnlGame.Location = New Point(12, 12)
@@ -112,11 +113,13 @@ Partial Class GameForm
         ' 
         ' TableLayoutPanel1
         ' 
-        TableLayoutPanel1.BackColor = Color.FromArgb(CByte(253), CByte(246), CByte(236))
+        TableLayoutPanel1.BackColor = Color.Transparent
+        TableLayoutPanel1.BackgroundImageLayout = ImageLayout.Zoom
         TableLayoutPanel1.ColumnCount = 2
-        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
-        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
+        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 61.1650467F))
+        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 38.8349571F))
         TableLayoutPanel1.Dock = DockStyle.Fill
+        TableLayoutPanel1.ForeColor = Color.Transparent
         TableLayoutPanel1.Location = New Point(0, 0)
         TableLayoutPanel1.Name = "TableLayoutPanel1"
         TableLayoutPanel1.RowCount = 2
@@ -143,7 +146,8 @@ Partial Class GameForm
         ' 
         lblLangkah.AutoSize = True
         lblLangkah.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lblLangkah.Location = New Point(14, 92)
+        lblLangkah.ForeColor = Color.Yellow
+        lblLangkah.Location = New Point(32, 94)
         lblLangkah.Name = "lblLangkah"
         lblLangkah.Size = New Size(88, 23)
         lblLangkah.TabIndex = 5
@@ -160,6 +164,7 @@ Partial Class GameForm
         Controls.Add(Panel1)
         Controls.Add(pnlGame)
         DoubleBuffered = True
+        Icon = CType(resources.GetObject("$this.Icon"), Icon)
         Name = "GameForm"
         StartPosition = FormStartPosition.CenterScreen
         Text = "ONET"

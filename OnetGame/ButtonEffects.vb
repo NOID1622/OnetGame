@@ -36,4 +36,25 @@ Module ButtonEffects
             btn.Location = New Point(btn.Location.X + 5, btn.Location.Y + 5)
         End If
     End Sub
+
+    Public Sub AturAktif(btnAktif As Button, grup As List(Of Button))
+        SoundHelper.PlayButtonSound()
+
+        For Each btn In grup
+            btn.FlatStyle = FlatStyle.Flat
+            btn.FlatAppearance.BorderSize = 0
+            btn.ForeColor = Color.Gray
+            btn.Font = New Font(btn.Font.FontFamily, btn.Font.Size, FontStyle.Regular)
+        Next
+
+        If btnAktif IsNot Nothing Then
+            btnAktif.FlatStyle = FlatStyle.Flat
+            btnAktif.FlatAppearance.BorderSize = 0
+            btnAktif.FlatAppearance.BorderColor = Color.White
+            btnAktif.ForeColor = Color.Yellow
+            btnAktif.Font = New Font(btnAktif.Font.FontFamily, btnAktif.Font.Size, FontStyle.Bold)
+        End If
+    End Sub
+
+
 End Module

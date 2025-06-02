@@ -28,6 +28,8 @@ Partial Class MainMenuForm
         scrBtn = New Button()
         setBtn = New Button()
         extBtn = New Button()
+        AxWindowsMediaPlayer1 = New AxWMPLib.AxWindowsMediaPlayer()
+        CType(AxWindowsMediaPlayer1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' Label1
@@ -114,6 +116,16 @@ Partial Class MainMenuForm
         extBtn.Text = "Keluar"
         extBtn.UseVisualStyleBackColor = False
         ' 
+        ' AxWindowsMediaPlayer1
+        ' 
+        AxWindowsMediaPlayer1.Enabled = True
+        AxWindowsMediaPlayer1.Location = New Point(838, 68)
+        AxWindowsMediaPlayer1.Name = "AxWindowsMediaPlayer1"
+        AxWindowsMediaPlayer1.OcxState = CType(resources.GetObject("AxWindowsMediaPlayer1.OcxState"), AxHost.State)
+        AxWindowsMediaPlayer1.Size = New Size(75, 23)
+        AxWindowsMediaPlayer1.TabIndex = 5
+        AxWindowsMediaPlayer1.Visible = False
+        ' 
         ' MainMenuForm
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
@@ -121,6 +133,7 @@ Partial Class MainMenuForm
         BackColor = Color.FromArgb(CByte(253), CByte(246), CByte(236))
         BackgroundImage = My.Resources.Resources.StarsAtmosphere_Portrait3
         ClientSize = New Size(982, 553)
+        Controls.Add(AxWindowsMediaPlayer1)
         Controls.Add(extBtn)
         Controls.Add(setBtn)
         Controls.Add(scrBtn)
@@ -133,6 +146,7 @@ Partial Class MainMenuForm
         Name = "MainMenuForm"
         StartPosition = FormStartPosition.CenterScreen
         Text = "ONET"
+        CType(AxWindowsMediaPlayer1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -142,5 +156,6 @@ Partial Class MainMenuForm
     Friend WithEvents scrBtn As Button
     Friend WithEvents setBtn As Button
     Friend WithEvents extBtn As Button
+    Friend WithEvents AxWindowsMediaPlayer1 As AxWMPLib.AxWindowsMediaPlayer
 
 End Class
