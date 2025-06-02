@@ -27,10 +27,26 @@ Public Class GameModeForm
         SoundHelper.PlayButtonSound2()
 
         ' Validasi input user
-        If selectedDifficulty = "" OrElse selectedMode = "" OrElse String.IsNullOrWhiteSpace(txtNama.Text) Then
-            MessageBox.Show("Pilih tingkat kesulitan, mode permainan, dan isi nama.")
+        If selectedDifficulty = "" Then
+
+            peringatantingkat.Visible = True
             Return
         End If
+
+        If selectedMode = "" Then
+
+            peringatanmode.Visible = True
+            Return
+        End If
+
+        If String.IsNullOrWhiteSpace(txtNama.Text) Then
+
+            peringatanNama.Visible = True
+            Return
+        End If
+
+
+
 
         ' Buat dan konfigurasi GameForm
         Dim gameForm As New GameForm()
@@ -62,7 +78,7 @@ Public Class GameModeForm
 
     ' === Mode Permainan ===
     Private Sub btnKlasik_Click(sender As Object, e As EventArgs) Handles btnKlasik.Click
-        SoundHelper.PlayBackgroundMusic()
+        'SoundHelper.PlayBackgroundMusic()
         selectedMode = "Klasik"
         ButtonEffects.AturAktif(btnKlasik, New List(Of Button) From {btnKlasik, btnWaktu, btnTantangan})
     End Sub
@@ -72,7 +88,7 @@ Public Class GameModeForm
         ButtonEffects.AturAktif(btnWaktu, New List(Of Button) From {btnKlasik, btnWaktu, btnTantangan})
 
         ' Ganti musik ke timer mode
-        SoundHelper.PlayTimerModeMusic()
+        'SoundHelper.PlayTimerModeMusic()
     End Sub
 
 
@@ -80,7 +96,7 @@ Public Class GameModeForm
 
         selectedMode = "Tantangan"
         ButtonEffects.AturAktif(btnTantangan, New List(Of Button) From {btnKlasik, btnWaktu, btnTantangan})
-        SoundHelper.PlayButtonSoundtantang()
+        'SoundHelper.PlayButtonSoundtantang()
     End Sub
 
     ' === Kembali ke Main Menu ===
