@@ -45,10 +45,6 @@ Public Class GameModeForm
             Return
         End If
 
-
-
-
-        ' Buat dan konfigurasi GameForm
         Dim gameForm As New GameForm()
         gameForm.mainMenuRef = mainMenuRef
         gameForm.TingkatKesulitan = selectedDifficulty

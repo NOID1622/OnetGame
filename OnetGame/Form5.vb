@@ -12,7 +12,17 @@
         SoundHelper.InitPlayer(Me)
 
         SetStyle(ControlStyles.SupportsTransparentBackColor, True)
-        ButtonEffects.AturAktif(Nothing, New List(Of Button) From {btnMarvel, btnPokemon})
+        Dim btnAktif As Button = Nothing
+        Select Case Settings.SelectedSkinFolder
+            Case "images2"
+                btnAktif = btnMarvel
+            Case "imagesJoker"
+                btnAktif = btnJoker
+            Case Else
+                btnAktif = btnPokemon
+        End Select
+        ButtonEffects.AturAktif(btnAktif, New List(Of Button) From {btnMarvel, btnPokemon, btnJoker})
+
     End Sub
 
     Private Sub btnKembali_Click(sender As Object, e As EventArgs) Handles btnKembali.Click
@@ -41,7 +51,7 @@
         selectedSkin = "Marvel"
         SelectedSkinFolder = "images2"
         Settings.SelectedSkinFolder = "images2"
-        ButtonEffects.AturAktif(btnMarvel, New List(Of Button) From {btnMarvel, btnPokemon})
+        ButtonEffects.AturAktif(btnMarvel, New List(Of Button) From {btnMarvel, btnPokemon, btnJoker})
     End Sub
 
     Private Sub btnPokemon_Click(sender As Object, e As EventArgs) Handles btnPokemon.Click
@@ -49,11 +59,14 @@
         selectedSkin = "Pokemon"
         SelectedSkinFolder = "images"
         Settings.SelectedSkinFolder = "images"
-        ButtonEffects.AturAktif(btnPokemon, New List(Of Button) From {btnMarvel, btnPokemon})
+        ButtonEffects.AturAktif(btnPokemon, New List(Of Button) From {btnMarvel, btnPokemon, btnJoker})
     End Sub
 
-
-    Private Sub volumetrackbar_Scroll(sender As Object, e As ScrollEventArgs) Handles volumetrackbar.Scroll
-        SoundHelper.SetGlobalVolume(volumetrackbar.Value)
+    Private Sub btnJoker_Click(sender As Object, e As EventArgs) Handles btnJoker.Click
+        SoundHelper.PlayButtonSound()
+        selectedSkin = "Joker"
+        SelectedSkinFolder = "imagesJoker"
+        Settings.SelectedSkinFolder = "imagesJoker"
+        ButtonEffects.AturAktif(btnJoker, New List(Of Button) From {btnMarvel, btnPokemon, btnJoker})
     End Sub
 End Class

@@ -7,7 +7,9 @@ Public Class GameForm
 
 
     ' === Variabel Konfigurasi ===
-    Private SkinFolder As String = "images"
+    'Private SkinFolder As String = "images"
+    Private SkinFolder As String = Settings.SelectedSkinFolder
+
     Private coverImage As Image
 
     ' === Variabel Informasi Pemain ===
@@ -55,9 +57,14 @@ Public Class GameForm
 
     Private bantuanTersisa As Integer = 0
 
+    'db
+
+    Private db As New dbManager()
+
 
     ' === Form Load ===
     Private Sub GameForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        SkinFolder = Settings.SelectedSkinFolder
         ApplyButtonHoverEffects(Me)
         SoundHelper.InitPlayer(Me)
 
@@ -66,7 +73,7 @@ Public Class GameForm
 
         KonfigurasiTingkatKesulitan()
 
-        kartuTimer.Interval = CInt(waktuTunggu * 250)
+        kartuTimer.Interval = CInt(waktuTunggu * 1000)
 
         AddHandler kartuTimer.Tick, AddressOf KartuTimer_Tick
 
@@ -84,6 +91,11 @@ Public Class GameForm
 
 
         InisialisasiPapan()
+
+        btnMenyerah.Enabled = False
+        btnBantuan.Enabled = False
+        btnBantuan.Text = $"Bantuan : {bantuanTersisa}"
+
     End Sub
 
 
@@ -173,7 +185,7 @@ Public Class GameForm
 
     Private Sub LoadCoverImage()
         Dim coverPath = Path.Combine(Application.StartupPath, SkinFolder, "cover.png")
-
+        'MessageBox.Show($"Cover Path: {coverPath}", "Debug Cover Path", MessageBoxButtons.OK, MessageBoxIcon.Information)
         If File.Exists(coverPath) Then
             coverImage?.Dispose()
             coverImage = Image.FromFile(coverPath)
@@ -253,6 +265,11 @@ Public Class GameForm
         If Not isGameStarted Then
             isGameStarted = True
             gameTimer.Start()
+
+            btnMenyerah.Enabled = True
+            btnBantuan.Enabled = True
+
+
         End If
 
         kartuTerbuka.Add(pb)
@@ -269,6 +286,9 @@ Public Class GameForm
             '        AcakUlangKartu()
             '    End If
             'End If
+
+            'gabisa diflip lagi njim
+
             If ModePermainan = "Tantangan" Then
                 langkahSejakAcakUlang += 1
             End If
@@ -372,9 +392,14 @@ Public Class GameForm
             Dim gameModeForm As New GameModeForm()
             gameModeForm.mainMenuRef = Me.mainMenuRef
             gameModeForm.Show()
+
+            ' Tambahkan baris berikut:
+            isGoingBackToMenu = True
+
             Me.Close()
         End If
     End Sub
+
 
 
     Private Sub btnJeda_Click(sender As Object, e As EventArgs) Handles btnJeda.Click
@@ -396,18 +421,31 @@ Public Class GameForm
     Private Sub btnBantuan_Click(sender As Object, e As EventArgs) Handles btnBantuan.Click
         SoundHelper.PlayButtonSound2()
         If bantuanTersisa <= 0 Then
-            MessageBox.Show("Bantuan sudah habis!", "Bantuan", MessageBoxButtons.OK, MessageBoxIcon.Information)
             btnBantuan.Enabled = False
             Return
         End If
         bantuanTersisa -= 1
+        btnBantuan.Text = $"Bantuan : {bantuanTersisa}"
         For Each pb As PictureBox In kartuArray
             If Not kartuSelesai.Contains(pb) Then
                 pb.Image = CType(pb.Tag, Image)
             End If
         Next
+        Dim durasiBantuan As Integer
 
-        Dim t As New Timer With {.Interval = 1000}
+        'durasiBantuan = 5
+        Select Case TingkatKesulitan
+            Case "Mudah"
+                durasiBantuan = 1000
+            Case "Sedang"
+                durasiBantuan = 1750
+            Case "Sulit"
+                durasiBantuan = 2500
+        End Select
+
+
+
+        Dim t As New Timer With {.Interval = durasiBantuan}
         AddHandler t.Tick, Sub()
                                For Each pb As PictureBox In kartuArray
                                    If Not kartuSelesai.Contains(pb) AndAlso Not kartuTerbuka.Contains(pb) Then
@@ -425,76 +463,104 @@ Public Class GameForm
     End Sub
 
 
+
     ' === Skor dan Penyimpanan ===
+    'Private Function HitungSkor() As Integer
+    '    Dim faktor As Double = If(TingkatKesulitan = "Sulit", 2.0, If(TingkatKesulitan = "Sedang", 1.5, 1.0))
+    '    Dim waktuDetik = CInt(waktuMain.TotalSeconds)
+    '    Dim skor = CInt((1000 * faktor) - (jumlahLangkah * 5) - (waktuDetik * 2))
+    '    Return Math.Max(skor, 0)
+    'End Function
+
     Private Function HitungSkor() As Integer
         Dim faktor As Double = If(TingkatKesulitan = "Sulit", 2.0, If(TingkatKesulitan = "Sedang", 1.5, 1.0))
-        Dim waktuDetik = CInt(waktuMain.TotalSeconds)
-        Dim skor = CInt((1000 * faktor) - (jumlahLangkah * 5) - (waktuDetik * 2))
+        Dim skor As Integer
+
+        If ModePermainan = "Waktu" Then
+            Dim waktuSisaDetik = CInt(waktuMain.TotalSeconds)
+            Dim waktuTotalDetik As Integer
+            Select Case TingkatKesulitan
+                Case "Mudah"
+                    waktuTotalDetik = 60
+                Case "Sedang"
+                    waktuTotalDetik = 120
+                Case "Sulit"
+                    waktuTotalDetik = 180
+            End Select
+            skor = CInt((1000 * faktor) + (waktuSisaDetik * 5) - (jumlahLangkah * 5))
+        Else
+            Dim waktuPakaiDetik = CInt(waktuMain.TotalSeconds)
+            skor = CInt((1000 * faktor) - (jumlahLangkah * 5) - (waktuPakaiDetik * 2))
+        End If
+
         Return Math.Max(skor, 0)
     End Function
 
 
 
 
+    'pindah DbMngr
 
-    Public Sub SimpanSkor(nama As String, skor As Integer, tingkatKesulitan As String, modePermainan As String)
-        Dim dbPath As String = "resources\leaderboard.db"
-        If Not Directory.Exists("resources") Then
-            Directory.CreateDirectory("resources")
-        End If
+    'Public Sub SimpanSkor(nama As String, skor As Integer, tingkatKesulitan As String, modePermainan As String)
+    '    Dim dbPath As String = "resources\leaderboard.db"
+    '    If Not Directory.Exists("resources") Then
+    '        Directory.CreateDirectory("resources")
+    '    End If
 
-        If Not File.Exists(dbPath) Then
-            SQLiteConnection.CreateFile(dbPath)
-        End If
+    '    If Not File.Exists(dbPath) Then
+    '        SQLiteConnection.CreateFile(dbPath)
+    '    End If
 
-        Dim connectionString As String = $"Data Source={dbPath};Version=3;"
+    '    Dim connectionString As String = $"Data Source={dbPath};Version=3;"
 
-        ' Buat tabel jika belum ada
-        Dim createTableQuery As String = "CREATE TABLE IF NOT EXISTS leaderboard (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        nama TEXT,
-        skor INTEGER,
-        tingkat_kesulitan TEXT,
-        mode_permainan TEXT,
-        tanggal TEXT DEFAULT (datetime('now','localtime'))
-    )"
+    '    ' Buat tabel jika belum ada
+    '    Dim createTableQuery As String = "CREATE TABLE IF NOT EXISTS leaderboard (
+    '    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    '    nama TEXT,
+    '    skor INTEGER,
+    '    tingkat_kesulitan TEXT,
+    '    mode_permainan TEXT,
+    '    tanggal TEXT DEFAULT (datetime('now','localtime'))
+    ')"
 
-        Using conn As New SQLiteConnection(connectionString)
-            conn.Open()
+    '    Using conn As New SQLiteConnection(connectionString)
+    '        conn.Open()
 
-            ' Pastikan tabel ada
-            Using cmd As New SQLiteCommand(createTableQuery, conn)
-                cmd.ExecuteNonQuery()
-            End Using
+    '        ' Pastikan tabel ada
+    '        Using cmd As New SQLiteCommand(createTableQuery, conn)
+    '            cmd.ExecuteNonQuery()
+    '        End Using
 
-            ' Simpan skor hasil permainan
-            Dim insertQuery As String = "INSERT INTO leaderboard (nama, skor, tingkat_kesulitan, mode_permainan) 
-                                     VALUES (@nama, @skor, @tingkat, @mode)"
+    '        ' Simpan skor hasil permainan
+    '        Dim insertQuery As String = "INSERT INTO leaderboard (nama, skor, tingkat_kesulitan, mode_permainan) 
+    '                                 VALUES (@nama, @skor, @tingkat, @mode)"
 
-            Using cmd As New SQLiteCommand(insertQuery, conn)
-                cmd.Parameters.AddWithValue("@nama", nama)
-                cmd.Parameters.AddWithValue("@skor", skor)
-                cmd.Parameters.AddWithValue("@tingkat", tingkatKesulitan)
-                cmd.Parameters.AddWithValue("@mode", modePermainan)
-                cmd.ExecuteNonQuery()
-            End Using
-        End Using
-    End Sub
+    '        Using cmd As New SQLiteCommand(insertQuery, conn)
+    '            cmd.Parameters.AddWithValue("@nama", nama)
+    '            cmd.Parameters.AddWithValue("@skor", skor)
+    '            cmd.Parameters.AddWithValue("@tingkat", tingkatKesulitan)
+    '            cmd.Parameters.AddWithValue("@mode", modePermainan)
+    '            cmd.ExecuteNonQuery()
+    '        End Using
+    '    End Using
+    'End Sub
 
 
 
 
     ' === Penanganan Form Close ===
+    Public Sub SimpanSkor(nama As String, skor As Integer, tingkatKesulitan As String, modePermainan As String)
+        db.SimpanSkor(nama, skor, tingkatKesulitan, modePermainan)
+    End Sub
+
 
     Private Sub GameForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         SoundHelper.PlayBackgroundMusic()
         If isExiting Then
             Application.Exit()
-        ElseIf isGoingBackToMenu Then
-            ' biarkan tutup
         Else
-            e.Cancel = True
-            Me.Close()
+            mainMenuRef?.Show()
+
         End If
     End Sub
 

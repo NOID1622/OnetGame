@@ -29,6 +29,7 @@ Partial Class SettingForm
         Label2 = New Label()
         btnKembali = New Button()
         volumetrackbar = New Guna.UI2.WinForms.Guna2TrackBar()
+        btnJoker = New Button()
         SuspendLayout()
         ' 
         ' Label1
@@ -54,7 +55,7 @@ Partial Class SettingForm
         btnMarvel.FlatStyle = FlatStyle.Flat
         btnMarvel.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         btnMarvel.ForeColor = Color.White
-        btnMarvel.Location = New Point(196, 172)
+        btnMarvel.Location = New Point(66, 172)
         btnMarvel.Name = "btnMarvel"
         btnMarvel.Size = New Size(230, 80)
         btnMarvel.TabIndex = 3
@@ -72,7 +73,7 @@ Partial Class SettingForm
         btnPokemon.FlatStyle = FlatStyle.Flat
         btnPokemon.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         btnPokemon.ForeColor = Color.White
-        btnPokemon.Location = New Point(514, 172)
+        btnPokemon.Location = New Point(371, 172)
         btnPokemon.Name = "btnPokemon"
         btnPokemon.Size = New Size(230, 80)
         btnPokemon.TabIndex = 4
@@ -118,6 +119,24 @@ Partial Class SettingForm
         volumetrackbar.TabIndex = 9
         volumetrackbar.ThumbColor = Color.SlateBlue
         ' 
+        ' btnJoker
+        ' 
+        btnJoker.BackColor = Color.Transparent
+        btnJoker.BackgroundImage = My.Resources.Resources.glasspanel_orange_PMV
+        btnJoker.BackgroundImageLayout = ImageLayout.Stretch
+        btnJoker.FlatAppearance.BorderSize = 0
+        btnJoker.FlatAppearance.MouseDownBackColor = Color.Transparent
+        btnJoker.FlatAppearance.MouseOverBackColor = Color.Transparent
+        btnJoker.FlatStyle = FlatStyle.Flat
+        btnJoker.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        btnJoker.ForeColor = Color.White
+        btnJoker.Location = New Point(690, 172)
+        btnJoker.Name = "btnJoker"
+        btnJoker.Size = New Size(230, 80)
+        btnJoker.TabIndex = 10
+        btnJoker.Text = "JOKER"
+        btnJoker.UseVisualStyleBackColor = False
+        ' 
         ' SettingForm
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
@@ -125,6 +144,7 @@ Partial Class SettingForm
         BackColor = Color.FromArgb(CByte(253), CByte(246), CByte(236))
         BackgroundImage = My.Resources.Resources.StarsAtmosphere_Portrait3
         ClientSize = New Size(982, 553)
+        Controls.Add(btnJoker)
         Controls.Add(volumetrackbar)
         Controls.Add(btnKembali)
         Controls.Add(Label2)
@@ -145,4 +165,5 @@ Partial Class SettingForm
     Friend WithEvents Label2 As Label
     Friend WithEvents btnKembali As Button
     Friend WithEvents volumetrackbar As Guna.UI2.WinForms.Guna2TrackBar
+    Friend WithEvents btnJoker As Button
 End Class

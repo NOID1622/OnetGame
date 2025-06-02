@@ -262,4 +262,8 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="imagesJoker\" />
+  </ItemGroup>
+
 </Project>
