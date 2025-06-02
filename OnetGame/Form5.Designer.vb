@@ -22,42 +22,127 @@ Partial Class SettingForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Button1 = New Button()
-        Button2 = New Button()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(SettingForm))
+        Label1 = New Label()
+        btnMarvel = New Button()
+        btnPokemon = New Button()
+        Label2 = New Label()
+        btnKembali = New Button()
+        volumetrackbar = New Guna.UI2.WinForms.Guna2TrackBar()
         SuspendLayout()
         ' 
-        ' Button1
+        ' Label1
         ' 
-        Button1.Location = New Point(876, 512)
-        Button1.Name = "Button1"
-        Button1.Size = New Size(94, 29)
-        Button1.TabIndex = 0
-        Button1.Text = "Button1"
-        Button1.UseVisualStyleBackColor = True
+        Label1.AutoSize = True
+        Label1.BackColor = Color.Transparent
+        Label1.Font = New Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label1.ForeColor = Color.White
+        Label1.Location = New Point(371, 85)
+        Label1.Name = "Label1"
+        Label1.Size = New Size(202, 46)
+        Label1.TabIndex = 2
+        Label1.Text = "Tema Kartu"
         ' 
-        ' Button2
+        ' btnMarvel
         ' 
-        Button2.Location = New Point(177, 141)
-        Button2.Name = "Button2"
-        Button2.Size = New Size(94, 29)
-        Button2.TabIndex = 1
-        Button2.Text = "Button2"
-        Button2.UseVisualStyleBackColor = True
+        btnMarvel.BackColor = Color.Transparent
+        btnMarvel.BackgroundImage = My.Resources.Resources.glasspanel_orange_PMV
+        btnMarvel.BackgroundImageLayout = ImageLayout.Stretch
+        btnMarvel.FlatAppearance.BorderSize = 0
+        btnMarvel.FlatAppearance.MouseDownBackColor = Color.Transparent
+        btnMarvel.FlatAppearance.MouseOverBackColor = Color.Transparent
+        btnMarvel.FlatStyle = FlatStyle.Flat
+        btnMarvel.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        btnMarvel.ForeColor = Color.White
+        btnMarvel.Location = New Point(196, 172)
+        btnMarvel.Name = "btnMarvel"
+        btnMarvel.Size = New Size(230, 80)
+        btnMarvel.TabIndex = 3
+        btnMarvel.Text = "MARVEL"
+        btnMarvel.UseVisualStyleBackColor = False
+        ' 
+        ' btnPokemon
+        ' 
+        btnPokemon.BackColor = Color.Transparent
+        btnPokemon.BackgroundImage = My.Resources.Resources.glasspanel_orange_PMV
+        btnPokemon.BackgroundImageLayout = ImageLayout.Stretch
+        btnPokemon.FlatAppearance.BorderSize = 0
+        btnPokemon.FlatAppearance.MouseDownBackColor = Color.Transparent
+        btnPokemon.FlatAppearance.MouseOverBackColor = Color.Transparent
+        btnPokemon.FlatStyle = FlatStyle.Flat
+        btnPokemon.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        btnPokemon.ForeColor = Color.White
+        btnPokemon.Location = New Point(514, 172)
+        btnPokemon.Name = "btnPokemon"
+        btnPokemon.Size = New Size(230, 80)
+        btnPokemon.TabIndex = 4
+        btnPokemon.Text = "POKEMON"
+        btnPokemon.UseVisualStyleBackColor = False
+        ' 
+        ' Label2
+        ' 
+        Label2.AutoSize = True
+        Label2.BackColor = Color.Transparent
+        Label2.Font = New Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label2.ForeColor = Color.White
+        Label2.Location = New Point(396, 309)
+        Label2.Name = "Label2"
+        Label2.Size = New Size(142, 46)
+        Label2.TabIndex = 5
+        Label2.Text = "Volume"
+        ' 
+        ' btnKembali
+        ' 
+        btnKembali.BackColor = Color.Transparent
+        btnKembali.BackgroundImage = My.Resources.Resources.Conquest_Nameplate_Red
+        btnKembali.BackgroundImageLayout = ImageLayout.Stretch
+        btnKembali.FlatAppearance.BorderSize = 0
+        btnKembali.FlatAppearance.MouseDownBackColor = Color.Transparent
+        btnKembali.FlatAppearance.MouseOverBackColor = Color.Transparent
+        btnKembali.FlatStyle = FlatStyle.Flat
+        btnKembali.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        btnKembali.ForeColor = Color.Snow
+        btnKembali.Location = New Point(753, 476)
+        btnKembali.Name = "btnKembali"
+        btnKembali.Size = New Size(192, 65)
+        btnKembali.TabIndex = 8
+        btnKembali.Text = "Kembali"
+        btnKembali.UseVisualStyleBackColor = False
+        ' 
+        ' volumetrackbar
+        ' 
+        volumetrackbar.BackColor = Color.Transparent
+        volumetrackbar.Location = New Point(288, 380)
+        volumetrackbar.Name = "volumetrackbar"
+        volumetrackbar.Size = New Size(375, 29)
+        volumetrackbar.TabIndex = 9
+        volumetrackbar.ThumbColor = Color.SlateBlue
         ' 
         ' SettingForm
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(253), CByte(246), CByte(236))
+        BackgroundImage = My.Resources.Resources.StarsAtmosphere_Portrait3
         ClientSize = New Size(982, 553)
-        Controls.Add(Button2)
-        Controls.Add(Button1)
+        Controls.Add(volumetrackbar)
+        Controls.Add(btnKembali)
+        Controls.Add(Label2)
+        Controls.Add(btnPokemon)
+        Controls.Add(btnMarvel)
+        Controls.Add(Label1)
+        ForeColor = SystemColors.ControlText
+        Icon = CType(resources.GetObject("$this.Icon"), Icon)
         Name = "SettingForm"
         StartPosition = FormStartPosition.CenterScreen
-        Text = "Form5"
+        Text = "Pengaturan"
         ResumeLayout(False)
+        PerformLayout()
     End Sub
-
-    Friend WithEvents Button1 As Button
-    Friend WithEvents Button2 As Button
+    Friend WithEvents Label1 As Label
+    Friend WithEvents btnMarvel As Button
+    Friend WithEvents btnPokemon As Button
+    Friend WithEvents Label2 As Label
+    Friend WithEvents btnKembali As Button
+    Friend WithEvents volumetrackbar As Guna.UI2.WinForms.Guna2TrackBar
 End Class

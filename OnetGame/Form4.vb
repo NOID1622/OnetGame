@@ -1,9 +1,15 @@
 ﻿Imports System.Text.Json
 Imports System.IO
-Public Class ScoreForm
-    Private Sub LeaderboardForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+Public Class ScoreForm
+    Public mainMenuRef As Form
+    Private kembaliKeMenu As Boolean = False
+
+    Private Sub ScoreForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ApplyButtonHoverEffects(Me)
         LoadLeaderboard()
+        SoundHelper.InitPlayer(Me)
+        DataGridView1.setcellTransparent()
     End Sub
 
     Private Sub LoadLeaderboard()
@@ -14,14 +20,21 @@ Public Class ScoreForm
             Dim daftarSkor As List(Of CreateJson) = JsonSerializer.Deserialize(Of List(Of CreateJson))(jsonString)
             DataGridView1.DataSource = daftarSkor
         End If
-        DataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
-        DataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
 
+        DataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
     End Sub
 
     Private Sub btnKembali_Click(sender As Object, e As EventArgs) Handles btnKembali.Click
-        Dim MainMenuForm As New MainMenuForm()
-        MainMenuForm.Show()
+        SoundHelper.PlayButtonSound2()
+        kembaliKeMenu = True
         Me.Close()
+    End Sub
+
+    Private Sub ScoreForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        If kembaliKeMenu Then
+            mainMenuRef?.Show()
+        Else
+            Application.Exit()
+        End If
     End Sub
 End Class

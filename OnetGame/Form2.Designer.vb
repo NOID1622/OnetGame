@@ -22,35 +22,40 @@ Partial Class GameModeForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(GameModeForm))
         Label1 = New Label()
         btnMudah = New Button()
         btnSedang = New Button()
         btnSulit = New Button()
-        Label2 = New Label()
-        btnKlasik = New Button()
-        btnWaktu = New Button()
-        btnTantangan = New Button()
         btnStart = New Button()
         btnKembali = New Button()
-        Panel1 = New Panel()
+        btnTantangan = New Button()
+        btnWaktu = New Button()
+        btnKlasik = New Button()
+        Label2 = New Label()
         txtNama = New TextBox()
-        Label3 = New Label()
-        Panel1.SuspendLayout()
         SuspendLayout()
         ' 
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Font = New Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label1.Location = New Point(301, 38)
+        Label1.BackColor = Color.Transparent
+        Label1.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label1.Location = New Point(394, 64)
         Label1.Name = "Label1"
-        Label1.Size = New Size(351, 54)
+        Label1.Size = New Size(178, 28)
         Label1.TabIndex = 0
         Label1.Text = "Tingkat Kesulitan"
         ' 
         ' btnMudah
         ' 
-        btnMudah.BackColor = Color.FromArgb(CByte(39), CByte(174), CByte(96))
+        btnMudah.BackColor = Color.Transparent
+        btnMudah.BackgroundImage = My.Resources.Resources.glasspanel_orange_PMV
+        btnMudah.BackgroundImageLayout = ImageLayout.Stretch
+        btnMudah.FlatAppearance.BorderSize = 0
+        btnMudah.FlatAppearance.MouseDownBackColor = Color.Transparent
+        btnMudah.FlatAppearance.MouseOverBackColor = Color.Transparent
+        btnMudah.FlatStyle = FlatStyle.Flat
         btnMudah.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         btnMudah.ForeColor = Color.White
         btnMudah.Location = New Point(101, 110)
@@ -62,7 +67,13 @@ Partial Class GameModeForm
         ' 
         ' btnSedang
         ' 
-        btnSedang.BackColor = Color.FromArgb(CByte(230), CByte(126), CByte(34))
+        btnSedang.BackColor = Color.Transparent
+        btnSedang.BackgroundImage = My.Resources.Resources.glasspanel_orange_PMV
+        btnSedang.BackgroundImageLayout = ImageLayout.Stretch
+        btnSedang.FlatAppearance.BorderSize = 0
+        btnSedang.FlatAppearance.MouseDownBackColor = Color.Transparent
+        btnSedang.FlatAppearance.MouseOverBackColor = Color.Transparent
+        btnSedang.FlatStyle = FlatStyle.Flat
         btnSedang.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         btnSedang.ForeColor = Color.White
         btnSedang.Location = New Point(367, 110)
@@ -74,7 +85,13 @@ Partial Class GameModeForm
         ' 
         ' btnSulit
         ' 
-        btnSulit.BackColor = Color.FromArgb(CByte(192), CByte(57), CByte(43))
+        btnSulit.BackColor = Color.Transparent
+        btnSulit.BackgroundImage = My.Resources.Resources.glasspanel_orange_PMV
+        btnSulit.BackgroundImageLayout = ImageLayout.Stretch
+        btnSulit.FlatAppearance.BorderSize = 0
+        btnSulit.FlatAppearance.MouseDownBackColor = Color.Transparent
+        btnSulit.FlatAppearance.MouseOverBackColor = Color.Transparent
+        btnSulit.FlatStyle = FlatStyle.Flat
         btnSulit.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         btnSulit.ForeColor = Color.White
         btnSulit.Location = New Point(630, 110)
@@ -84,123 +101,135 @@ Partial Class GameModeForm
         btnSulit.Text = "Sulit"
         btnSulit.UseVisualStyleBackColor = False
         ' 
-        ' Label2
-        ' 
-        Label2.Anchor = AnchorStyles.Top
-        Label2.AutoSize = True
-        Label2.Font = New Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label2.ForeColor = Color.Black
-        Label2.Location = New Point(289, 0)
-        Label2.Name = "Label2"
-        Label2.Size = New Size(345, 54)
-        Label2.TabIndex = 4
-        Label2.Text = "Mode Permainan"
-        ' 
-        ' btnKlasik
-        ' 
-        btnKlasik.BackColor = Color.FromArgb(CByte(52), CByte(152), CByte(219))
-        btnKlasik.Location = New Point(89, 67)
-        btnKlasik.Name = "btnKlasik"
-        btnKlasik.Size = New Size(230, 80)
-        btnKlasik.TabIndex = 5
-        btnKlasik.Text = "Klasik"
-        btnKlasik.UseVisualStyleBackColor = False
-        ' 
-        ' btnWaktu
-        ' 
-        btnWaktu.BackColor = Color.FromArgb(CByte(155), CByte(89), CByte(182))
-        btnWaktu.Location = New Point(355, 67)
-        btnWaktu.Name = "btnWaktu"
-        btnWaktu.Size = New Size(230, 80)
-        btnWaktu.TabIndex = 6
-        btnWaktu.Text = "Waktu"
-        btnWaktu.UseVisualStyleBackColor = False
-        ' 
-        ' btnTantangan
-        ' 
-        btnTantangan.BackColor = Color.FromArgb(CByte(142), CByte(68), CByte(173))
-        btnTantangan.Location = New Point(618, 67)
-        btnTantangan.Name = "btnTantangan"
-        btnTantangan.Size = New Size(230, 80)
-        btnTantangan.TabIndex = 7
-        btnTantangan.Text = "Tantangan"
-        btnTantangan.UseVisualStyleBackColor = False
-        ' 
         ' btnStart
         ' 
-        btnStart.BackColor = Color.FromArgb(CByte(241), CByte(196), CByte(15))
+        btnStart.BackColor = Color.Transparent
+        btnStart.BackgroundImage = My.Resources.Resources.ConquestTower_Banner_Purple
+        btnStart.BackgroundImageLayout = ImageLayout.Stretch
+        btnStart.FlatAppearance.BorderSize = 0
+        btnStart.FlatAppearance.MouseDownBackColor = Color.Transparent
+        btnStart.FlatAppearance.MouseOverBackColor = Color.Transparent
+        btnStart.FlatStyle = FlatStyle.Flat
         btnStart.Font = New Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        btnStart.Location = New Point(336, 448)
+        btnStart.Location = New Point(603, 387)
         btnStart.Name = "btnStart"
-        btnStart.Size = New Size(293, 57)
+        btnStart.Size = New Size(347, 83)
         btnStart.TabIndex = 8
         btnStart.Text = "Mulai"
         btnStart.UseVisualStyleBackColor = False
         ' 
         ' btnKembali
         ' 
-        btnKembali.BackColor = Color.FromArgb(CByte(231), CByte(76), CByte(60))
+        btnKembali.BackColor = Color.Transparent
+        btnKembali.BackgroundImage = My.Resources.Resources.Conquest_Nameplate_Red
+        btnKembali.BackgroundImageLayout = ImageLayout.Stretch
+        btnKembali.FlatAppearance.BorderSize = 0
+        btnKembali.FlatAppearance.MouseDownBackColor = Color.Transparent
+        btnKembali.FlatAppearance.MouseOverBackColor = Color.Transparent
+        btnKembali.FlatStyle = FlatStyle.Flat
         btnKembali.Font = New Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         btnKembali.ForeColor = Color.White
-        btnKembali.Location = New Point(850, 511)
+        btnKembali.Location = New Point(778, 476)
         btnKembali.Name = "btnKembali"
-        btnKembali.Size = New Size(120, 30)
+        btnKembali.Size = New Size(192, 65)
         btnKembali.TabIndex = 9
         btnKembali.Text = "Kembali"
         btnKembali.UseVisualStyleBackColor = False
         ' 
-        ' Panel1
+        ' btnTantangan
         ' 
-        Panel1.Controls.Add(Label2)
-        Panel1.Controls.Add(btnKlasik)
-        Panel1.Controls.Add(btnWaktu)
-        Panel1.Controls.Add(btnTantangan)
-        Panel1.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Panel1.ForeColor = Color.White
-        Panel1.Location = New Point(12, 220)
-        Panel1.Name = "Panel1"
-        Panel1.Size = New Size(958, 222)
-        Panel1.TabIndex = 10
+        btnTantangan.BackColor = Color.Transparent
+        btnTantangan.BackgroundImage = My.Resources.Resources.UI_Collection_TitleNamePlate
+        btnTantangan.BackgroundImageLayout = ImageLayout.Stretch
+        btnTantangan.FlatAppearance.BorderSize = 0
+        btnTantangan.FlatAppearance.MouseDownBackColor = Color.Transparent
+        btnTantangan.FlatAppearance.MouseOverBackColor = Color.Transparent
+        btnTantangan.FlatStyle = FlatStyle.Flat
+        btnTantangan.Location = New Point(367, 275)
+        btnTantangan.Name = "btnTantangan"
+        btnTantangan.Size = New Size(230, 80)
+        btnTantangan.TabIndex = 7
+        btnTantangan.Text = "Tantangan"
+        btnTantangan.UseVisualStyleBackColor = False
+        ' 
+        ' btnWaktu
+        ' 
+        btnWaktu.BackColor = Color.Transparent
+        btnWaktu.BackgroundImage = My.Resources.Resources.UI_Collection_TitleNamePlate
+        btnWaktu.BackgroundImageLayout = ImageLayout.Stretch
+        btnWaktu.FlatAppearance.BorderSize = 0
+        btnWaktu.FlatAppearance.MouseDownBackColor = Color.Transparent
+        btnWaktu.FlatAppearance.MouseOverBackColor = Color.Transparent
+        btnWaktu.FlatStyle = FlatStyle.Flat
+        btnWaktu.ForeColor = Color.WhiteSmoke
+        btnWaktu.Location = New Point(101, 275)
+        btnWaktu.Name = "btnWaktu"
+        btnWaktu.Size = New Size(230, 80)
+        btnWaktu.TabIndex = 6
+        btnWaktu.Text = "Waktu"
+        btnWaktu.UseVisualStyleBackColor = False
+        ' 
+        ' btnKlasik
+        ' 
+        btnKlasik.BackColor = Color.Transparent
+        btnKlasik.BackgroundImage = My.Resources.Resources.UI_Collection_TitleNamePlate
+        btnKlasik.BackgroundImageLayout = ImageLayout.Stretch
+        btnKlasik.FlatAppearance.BorderSize = 0
+        btnKlasik.FlatAppearance.MouseDownBackColor = Color.Transparent
+        btnKlasik.FlatAppearance.MouseOverBackColor = Color.Transparent
+        btnKlasik.FlatStyle = FlatStyle.Flat
+        btnKlasik.Location = New Point(630, 275)
+        btnKlasik.Name = "btnKlasik"
+        btnKlasik.Size = New Size(230, 80)
+        btnKlasik.TabIndex = 5
+        btnKlasik.Text = "Klasik"
+        btnKlasik.UseVisualStyleBackColor = False
+        ' 
+        ' Label2
+        ' 
+        Label2.AutoSize = True
+        Label2.BackColor = Color.Transparent
+        Label2.Font = New Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label2.Location = New Point(314, 226)
+        Label2.Name = "Label2"
+        Label2.Size = New Size(338, 46)
+        Label2.TabIndex = 10
+        Label2.Text = "MODE PERMAINAN"
         ' 
         ' txtNama
         ' 
-        txtNama.Location = New Point(162, 459)
+        txtNama.Location = New Point(131, 408)
         txtNama.Name = "txtNama"
-        txtNama.Size = New Size(152, 27)
+        txtNama.Size = New Size(466, 27)
         txtNama.TabIndex = 11
-        txtNama.Text = "player1"
-        ' 
-        ' Label3
-        ' 
-        Label3.AutoSize = True
-        Label3.Location = New Point(100, 462)
-        Label3.Name = "Label3"
-        Label3.Size = New Size(56, 20)
-        Label3.TabIndex = 12
-        Label3.Text = "Nama :"
         ' 
         ' GameModeForm
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(253), CByte(246), CByte(236))
+        BackgroundImage = My.Resources.Resources.StarsAtmosphere_Portrait3
+        BackgroundImageLayout = ImageLayout.Stretch
         ClientSize = New Size(982, 553)
-        Controls.Add(Label3)
         Controls.Add(txtNama)
-        Controls.Add(Panel1)
+        Controls.Add(Label2)
+        Controls.Add(btnKlasik)
         Controls.Add(btnKembali)
+        Controls.Add(btnWaktu)
         Controls.Add(btnStart)
+        Controls.Add(btnTantangan)
         Controls.Add(btnSulit)
         Controls.Add(btnSedang)
         Controls.Add(btnMudah)
         Controls.Add(Label1)
+        DoubleBuffered = True
+        ForeColor = SystemColors.ControlLightLight
         FormBorderStyle = FormBorderStyle.FixedSingle
+        Icon = CType(resources.GetObject("$this.Icon"), Icon)
         MaximizeBox = False
         Name = "GameModeForm"
         StartPosition = FormStartPosition.CenterScreen
         Text = "ONET"
-        Panel1.ResumeLayout(False)
-        Panel1.PerformLayout()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -209,13 +238,11 @@ Partial Class GameModeForm
     Friend WithEvents btnMudah As Button
     Friend WithEvents btnSedang As Button
     Friend WithEvents btnSulit As Button
-    Friend WithEvents Label2 As Label
-    Friend WithEvents btnKlasik As Button
-    Friend WithEvents btnWaktu As Button
-    Friend WithEvents btnTantangan As Button
     Friend WithEvents btnStart As Button
     Friend WithEvents btnKembali As Button
-    Friend WithEvents Panel1 As Panel
+    Friend WithEvents btnTantangan As Button
+    Friend WithEvents btnWaktu As Button
+    Friend WithEvents btnKlasik As Button
+    Friend WithEvents Label2 As Label
     Friend WithEvents txtNama As TextBox
-    Friend WithEvents Label3 As Label
 End Class

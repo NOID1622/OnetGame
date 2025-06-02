@@ -22,6 +22,7 @@ Partial Class GameForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(GameForm))
         btnJeda = New Button()
         btnBantuan = New Button()
         btnMenyerah = New Button()
@@ -36,7 +37,13 @@ Partial Class GameForm
         ' 
         ' btnJeda
         ' 
-        btnJeda.BackColor = Color.FromArgb(CByte(52), CByte(152), CByte(219))
+        btnJeda.BackColor = Color.Transparent
+        btnJeda.BackgroundImage = My.Resources.Resources.glasspanel_orange_PMV
+        btnJeda.BackgroundImageLayout = ImageLayout.Stretch
+        btnJeda.FlatAppearance.BorderSize = 0
+        btnJeda.FlatAppearance.MouseDownBackColor = Color.Transparent
+        btnJeda.FlatAppearance.MouseOverBackColor = Color.Transparent
+        btnJeda.FlatStyle = FlatStyle.Flat
         btnJeda.Font = New Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         btnJeda.ForeColor = Color.White
         btnJeda.Location = New Point(14, 140)
@@ -48,7 +55,13 @@ Partial Class GameForm
         ' 
         ' btnBantuan
         ' 
-        btnBantuan.BackColor = Color.FromArgb(CByte(39), CByte(174), CByte(96))
+        btnBantuan.BackColor = Color.Transparent
+        btnBantuan.BackgroundImage = My.Resources.Resources.glasspanel_orange_PMV
+        btnBantuan.BackgroundImageLayout = ImageLayout.Stretch
+        btnBantuan.FlatAppearance.BorderSize = 0
+        btnBantuan.FlatAppearance.MouseDownBackColor = Color.Transparent
+        btnBantuan.FlatAppearance.MouseOverBackColor = Color.Transparent
+        btnBantuan.FlatStyle = FlatStyle.Flat
         btnBantuan.Font = New Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         btnBantuan.ForeColor = Color.White
         btnBantuan.Location = New Point(14, 189)
@@ -60,7 +73,13 @@ Partial Class GameForm
         ' 
         ' btnMenyerah
         ' 
-        btnMenyerah.BackColor = Color.FromArgb(CByte(231), CByte(76), CByte(60))
+        btnMenyerah.BackColor = Color.Transparent
+        btnMenyerah.BackgroundImage = My.Resources.Resources.glasspanel_orange_PMV
+        btnMenyerah.BackgroundImageLayout = ImageLayout.Stretch
+        btnMenyerah.FlatAppearance.BorderSize = 0
+        btnMenyerah.FlatAppearance.MouseDownBackColor = Color.Transparent
+        btnMenyerah.FlatAppearance.MouseOverBackColor = Color.Transparent
+        btnMenyerah.FlatStyle = FlatStyle.Flat
         btnMenyerah.Font = New Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         btnMenyerah.ForeColor = Color.White
         btnMenyerah.Location = New Point(14, 238)
@@ -75,7 +94,7 @@ Partial Class GameForm
         lblTimer.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
         lblTimer.AutoSize = True
         lblTimer.Font = New Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lblTimer.Location = New Point(3, 29)
+        lblTimer.Location = New Point(14, 28)
         lblTimer.Name = "lblTimer"
         lblTimer.Size = New Size(158, 46)
         lblTimer.TabIndex = 4
@@ -84,7 +103,7 @@ Partial Class GameForm
         ' 
         ' pnlGame
         ' 
-        pnlGame.BackColor = Color.LightGray
+        pnlGame.BackColor = Color.Transparent
         pnlGame.BorderStyle = BorderStyle.FixedSingle
         pnlGame.Controls.Add(TableLayoutPanel1)
         pnlGame.Location = New Point(12, 12)
@@ -94,11 +113,13 @@ Partial Class GameForm
         ' 
         ' TableLayoutPanel1
         ' 
-        TableLayoutPanel1.BackColor = Color.FromArgb(CByte(253), CByte(246), CByte(236))
+        TableLayoutPanel1.BackColor = Color.Transparent
+        TableLayoutPanel1.BackgroundImageLayout = ImageLayout.Zoom
         TableLayoutPanel1.ColumnCount = 2
-        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
-        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
+        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 61.1650467F))
+        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 38.8349571F))
         TableLayoutPanel1.Dock = DockStyle.Fill
+        TableLayoutPanel1.ForeColor = Color.Transparent
         TableLayoutPanel1.Location = New Point(0, 0)
         TableLayoutPanel1.Name = "TableLayoutPanel1"
         TableLayoutPanel1.RowCount = 2
@@ -109,11 +130,13 @@ Partial Class GameForm
         ' 
         ' Panel1
         ' 
+        Panel1.BackColor = Color.Transparent
         Panel1.Controls.Add(lblLangkah)
         Panel1.Controls.Add(lblTimer)
         Panel1.Controls.Add(btnJeda)
         Panel1.Controls.Add(btnMenyerah)
         Panel1.Controls.Add(btnBantuan)
+        Panel1.ForeColor = Color.White
         Panel1.Location = New Point(794, 13)
         Panel1.Name = "Panel1"
         Panel1.Size = New Size(176, 527)
@@ -123,7 +146,8 @@ Partial Class GameForm
         ' 
         lblLangkah.AutoSize = True
         lblLangkah.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lblLangkah.Location = New Point(14, 92)
+        lblLangkah.ForeColor = Color.Yellow
+        lblLangkah.Location = New Point(32, 94)
         lblLangkah.Name = "lblLangkah"
         lblLangkah.Size = New Size(88, 23)
         lblLangkah.TabIndex = 5
@@ -134,9 +158,13 @@ Partial Class GameForm
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(253), CByte(246), CByte(236))
+        BackgroundImage = My.Resources.Resources.StarsAtmosphere_Portrait3
+        BackgroundImageLayout = ImageLayout.Stretch
         ClientSize = New Size(982, 553)
         Controls.Add(Panel1)
         Controls.Add(pnlGame)
+        DoubleBuffered = True
+        Icon = CType(resources.GetObject("$this.Icon"), Icon)
         Name = "GameForm"
         StartPosition = FormStartPosition.CenterScreen
         Text = "ONET"
