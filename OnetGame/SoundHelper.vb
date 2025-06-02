@@ -53,6 +53,19 @@ Module SoundHelper
         End If
     End Sub
 
+    Public Sub PlayTantanganModeMusic()
+        Dim tantanganPath As String = IO.Path.Combine(Application.StartupPath, "sound\tantangan.mp3")
+        PlayMusic(tantanganPath, "tantangan")
+    End Sub
+    Public Sub Playcorrect()
+        Dim tantanganPath As String = IO.Path.Combine(Application.StartupPath, "sound\correct.mp3")
+        PlayMusic(tantanganPath, "tantangan")
+    End Sub
+    Public Sub Playwrong()
+        Dim tantanganPath As String = IO.Path.Combine(Application.StartupPath, "sound\wrong.mp3")
+        PlayMusic(tantanganPath, "tantangan")
+    End Sub
+
     ' === BACKSOUND ===
     Public Sub PlayBackgroundMusic()
         PlayMusic(backsoundMain, "main")

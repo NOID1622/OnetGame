@@ -121,6 +121,9 @@
   <data name="StarsAtmosphere_Portrait" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\StarsAtmosphere_Portrait.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="DeadpoolOuch" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\DeadpoolOuch.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="StarsAtmosphere_Portrait2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\background\StarsAtmosphere_Portrait2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -142,6 +145,9 @@
   <data name="Hexagons_07" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\Hexagons_07.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Play" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icon\Play.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Play_Button_BlackGlass1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\Play_Button_BlackGlass1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -151,13 +157,16 @@
   <data name="Conquest_Nameplate_Red" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\Conquest_Nameplate_Red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Stripes_01" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\Stripes_01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ConquestTower_Banner_Purple" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\ConquestTower_Banner_Purple.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="UI_Collection_TitleNamePlate" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\UI_Collection_TitleNamePlate.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Stripes_01" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\Stripes_01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="dfvvca3-553dc247-632d-4918-a0ba-8053d5f91d86" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icon\dfvvca3-553dc247-632d-4918-a0ba-8053d5f91d86.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

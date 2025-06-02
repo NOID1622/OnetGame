@@ -30,8 +30,10 @@
     <None Remove="images2\9.png" />
     <None Remove="sound\backsound.mp3" />
     <None Remove="sound\buttonclick.mp3" />
+    <None Remove="sound\correct.mp3" />
     <None Remove="sound\tantangan.mp3" />
     <None Remove="sound\timemode.mp3" />
+    <None Remove="sound\wrong.mp3" />
   </ItemGroup>
 
   <ItemGroup>
@@ -145,10 +147,16 @@
     <Content Include="sound\buttonclick.mp3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="sound\correct.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="sound\tantangan.mp3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="sound\timemode.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="sound\wrong.mp3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

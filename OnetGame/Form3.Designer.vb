@@ -167,7 +167,7 @@ Partial Class GameForm
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
         Name = "GameForm"
         StartPosition = FormStartPosition.CenterScreen
-        Text = "ONET"
+        Text = "POKEZZLE"
         pnlGame.ResumeLayout(False)
         Panel1.ResumeLayout(False)
         Panel1.PerformLayout()

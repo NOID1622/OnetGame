@@ -34,6 +34,9 @@ Partial Class GameModeForm
         btnKlasik = New Button()
         Label2 = New Label()
         txtNama = New TextBox()
+        peringatanNama = New Label()
+        peringatanmode = New Label()
+        peringatantingkat = New Label()
         SuspendLayout()
         ' 
         ' Label1
@@ -52,6 +55,7 @@ Partial Class GameModeForm
         btnMudah.BackColor = Color.Transparent
         btnMudah.BackgroundImage = My.Resources.Resources.glasspanel_orange_PMV
         btnMudah.BackgroundImageLayout = ImageLayout.Stretch
+        btnMudah.Cursor = Cursors.Hand
         btnMudah.FlatAppearance.BorderSize = 0
         btnMudah.FlatAppearance.MouseDownBackColor = Color.Transparent
         btnMudah.FlatAppearance.MouseOverBackColor = Color.Transparent
@@ -70,6 +74,7 @@ Partial Class GameModeForm
         btnSedang.BackColor = Color.Transparent
         btnSedang.BackgroundImage = My.Resources.Resources.glasspanel_orange_PMV
         btnSedang.BackgroundImageLayout = ImageLayout.Stretch
+        btnSedang.Cursor = Cursors.Hand
         btnSedang.FlatAppearance.BorderSize = 0
         btnSedang.FlatAppearance.MouseDownBackColor = Color.Transparent
         btnSedang.FlatAppearance.MouseOverBackColor = Color.Transparent
@@ -88,6 +93,7 @@ Partial Class GameModeForm
         btnSulit.BackColor = Color.Transparent
         btnSulit.BackgroundImage = My.Resources.Resources.glasspanel_orange_PMV
         btnSulit.BackgroundImageLayout = ImageLayout.Stretch
+        btnSulit.Cursor = Cursors.Hand
         btnSulit.FlatAppearance.BorderSize = 0
         btnSulit.FlatAppearance.MouseDownBackColor = Color.Transparent
         btnSulit.FlatAppearance.MouseOverBackColor = Color.Transparent
@@ -106,6 +112,7 @@ Partial Class GameModeForm
         btnStart.BackColor = Color.Transparent
         btnStart.BackgroundImage = My.Resources.Resources.ConquestTower_Banner_Purple
         btnStart.BackgroundImageLayout = ImageLayout.Stretch
+        btnStart.Cursor = Cursors.Hand
         btnStart.FlatAppearance.BorderSize = 0
         btnStart.FlatAppearance.MouseDownBackColor = Color.Transparent
         btnStart.FlatAppearance.MouseOverBackColor = Color.Transparent
@@ -123,6 +130,7 @@ Partial Class GameModeForm
         btnKembali.BackColor = Color.Transparent
         btnKembali.BackgroundImage = My.Resources.Resources.Conquest_Nameplate_Red
         btnKembali.BackgroundImageLayout = ImageLayout.Stretch
+        btnKembali.Cursor = Cursors.Hand
         btnKembali.FlatAppearance.BorderSize = 0
         btnKembali.FlatAppearance.MouseDownBackColor = Color.Transparent
         btnKembali.FlatAppearance.MouseOverBackColor = Color.Transparent
@@ -141,6 +149,7 @@ Partial Class GameModeForm
         btnTantangan.BackColor = Color.Transparent
         btnTantangan.BackgroundImage = My.Resources.Resources.UI_Collection_TitleNamePlate
         btnTantangan.BackgroundImageLayout = ImageLayout.Stretch
+        btnTantangan.Cursor = Cursors.Hand
         btnTantangan.FlatAppearance.BorderSize = 0
         btnTantangan.FlatAppearance.MouseDownBackColor = Color.Transparent
         btnTantangan.FlatAppearance.MouseOverBackColor = Color.Transparent
@@ -157,6 +166,7 @@ Partial Class GameModeForm
         btnWaktu.BackColor = Color.Transparent
         btnWaktu.BackgroundImage = My.Resources.Resources.UI_Collection_TitleNamePlate
         btnWaktu.BackgroundImageLayout = ImageLayout.Stretch
+        btnWaktu.Cursor = Cursors.Hand
         btnWaktu.FlatAppearance.BorderSize = 0
         btnWaktu.FlatAppearance.MouseDownBackColor = Color.Transparent
         btnWaktu.FlatAppearance.MouseOverBackColor = Color.Transparent
@@ -174,6 +184,7 @@ Partial Class GameModeForm
         btnKlasik.BackColor = Color.Transparent
         btnKlasik.BackgroundImage = My.Resources.Resources.UI_Collection_TitleNamePlate
         btnKlasik.BackgroundImageLayout = ImageLayout.Stretch
+        btnKlasik.Cursor = Cursors.Hand
         btnKlasik.FlatAppearance.BorderSize = 0
         btnKlasik.FlatAppearance.MouseDownBackColor = Color.Transparent
         btnKlasik.FlatAppearance.MouseOverBackColor = Color.Transparent
@@ -198,10 +209,53 @@ Partial Class GameModeForm
         ' 
         ' txtNama
         ' 
+        txtNama.BackColor = Color.DarkSlateBlue
+        txtNama.BorderStyle = BorderStyle.None
+        txtNama.ForeColor = Color.White
         txtNama.Location = New Point(131, 408)
         txtNama.Name = "txtNama"
-        txtNama.Size = New Size(466, 27)
+        txtNama.PlaceholderText = "Tolong masukkan nama anda"
+        txtNama.Size = New Size(466, 20)
         txtNama.TabIndex = 11
+        ' 
+        ' peringatanNama
+        ' 
+        peringatanNama.AutoSize = True
+        peringatanNama.BackColor = Color.Transparent
+        peringatanNama.Font = New Font("Segoe UI Semibold", 9F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, CByte(0))
+        peringatanNama.ForeColor = Color.Yellow
+        peringatanNama.Location = New Point(131, 431)
+        peringatanNama.Name = "peringatanNama"
+        peringatanNama.Size = New Size(250, 20)
+        peringatanNama.TabIndex = 12
+        peringatanNama.Text = "TOLONG MASUKKAN NAMA ANDA"
+        peringatanNama.Visible = False
+        ' 
+        ' peringatanmode
+        ' 
+        peringatanmode.AutoSize = True
+        peringatanmode.BackColor = Color.Transparent
+        peringatanmode.Font = New Font("Segoe UI", 7.8F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, CByte(0))
+        peringatanmode.ForeColor = Color.Yellow
+        peringatanmode.Location = New Point(394, 272)
+        peringatanmode.Name = "peringatanmode"
+        peringatanmode.Size = New Size(184, 17)
+        peringatanmode.TabIndex = 13
+        peringatanmode.Text = "TOLONG MODE PERMAINAN"
+        peringatanmode.Visible = False
+        ' 
+        ' peringatantingkat
+        ' 
+        peringatantingkat.AutoSize = True
+        peringatantingkat.BackColor = Color.Transparent
+        peringatantingkat.Font = New Font("Segoe UI", 6F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, CByte(0))
+        peringatantingkat.ForeColor = Color.Yellow
+        peringatantingkat.Location = New Point(394, 92)
+        peringatantingkat.Name = "peringatantingkat"
+        peringatantingkat.Size = New Size(178, 12)
+        peringatantingkat.TabIndex = 14
+        peringatantingkat.Text = "TOLONG PILIH TINGKAT KESULITAN"
+        peringatantingkat.Visible = False
         ' 
         ' GameModeForm
         ' 
@@ -211,6 +265,9 @@ Partial Class GameModeForm
         BackgroundImage = My.Resources.Resources.StarsAtmosphere_Portrait3
         BackgroundImageLayout = ImageLayout.Stretch
         ClientSize = New Size(982, 553)
+        Controls.Add(peringatantingkat)
+        Controls.Add(peringatanmode)
+        Controls.Add(peringatanNama)
         Controls.Add(txtNama)
         Controls.Add(Label2)
         Controls.Add(btnKlasik)
@@ -229,7 +286,7 @@ Partial Class GameModeForm
         MaximizeBox = False
         Name = "GameModeForm"
         StartPosition = FormStartPosition.CenterScreen
-        Text = "ONET"
+        Text = "POKEZZLE"
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -245,4 +302,7 @@ Partial Class GameModeForm
     Friend WithEvents btnKlasik As Button
     Friend WithEvents Label2 As Label
     Friend WithEvents txtNama As TextBox
+    Friend WithEvents peringatanNama As Label
+    Friend WithEvents peringatanmode As Label
+    Friend WithEvents peringatantingkat As Label
 End Class

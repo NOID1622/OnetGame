@@ -18,7 +18,17 @@ Public Class ScoreForm
     Public Sub LoadLeaderboard()
         Dim dbPath As String = "resources/leaderboard.db"
         Dim connectionString As String = $"Data Source={dbPath};Version=3;"
-        Dim query As String = "SELECT nama, skor, tingkat_kesulitan, mode_permainan, tanggal FROM leaderboard ORDER BY skor DESC"
+        Dim query As String = "
+        SELECT nama, skor, tingkat_kesulitan, mode_permainan, tanggal
+        FROM leaderboard
+        ORDER BY 
+            CASE mode_permainan
+                WHEN 'Tantangan' THEN 1
+                WHEN 'Waktu' THEN 2
+                WHEN 'Klasik' THEN 3
+                ELSE 4
+            END,
+            skor DESC"
 
         Try
             Using conn As New SQLiteConnection(connectionString)

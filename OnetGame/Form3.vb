@@ -5,6 +5,7 @@ Imports System.Data.SQLite
 Public Class GameForm
     Public mainMenuRef As Form
 
+
     ' === Variabel Konfigurasi ===
     Private SkinFolder As String = "images"
     Private coverImage As Image
@@ -281,13 +282,15 @@ Public Class GameForm
 
         'If kartuTerbuka(0).Tag.Equals(kartuTerbuka(1).Tag) Then
         If kartuTerbuka.Count >= 2 AndAlso kartuTerbuka(0).Tag.Equals(kartuTerbuka(1).Tag) Then
-
             kartuSelesai.AddRange(kartuTerbuka)
+            'SoundHelper.Playcorrect()
         Else
             For Each k In kartuTerbuka
                 k.Image = coverImage
             Next
+            'SoundHelper.PlayWrong()
         End If
+
 
 
         kartuTerbuka.Clear()
@@ -303,7 +306,8 @@ Public Class GameForm
             MessageBox.Show("Kartu diacak ulang!", "Tantangan", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
 
-        If kartuSelesai.Count = totalPasangan * 2 Then
+        If kartuSelesai.Count = totalPasangan * 2 AndAlso Not isExiting Then
+            isExiting = True
             gameTimer.Stop()
             Dim skor = HitungSkor()
             MessageBox.Show($"Selamat! Kamu menyelesaikan permainan.{vbCrLf}" &
@@ -317,6 +321,7 @@ Public Class GameForm
             scoreForm.Show()
             Me.Close()
         End If
+
     End Sub
 
     ' === Timer Game ===
@@ -362,20 +367,15 @@ Public Class GameForm
             Next
 
             MessageBox.Show("Permainan berakhir. Coba lagi lain waktu!", "Menyerah")
-' <<<<<<< deadlinemen
-'             Dim gameModeForm As New GameModeForm()
-'             gameModeForm.mainMenuRef = Me.mainMenuRef ' 🟢 Teruskan referensi MainForm!
-'             gameModeForm.Show()
-' =======
 
-            'Dim gameModeForm As New GameModeForm()
-            'GameModeForm
-            GameModeForm.mainMenuRef = mainMenuRef
-            GameModeForm.Show()
-' >>>>>>> master
+            ' Kembali ke GameModeForm
+            Dim gameModeForm As New GameModeForm()
+            gameModeForm.mainMenuRef = Me.mainMenuRef
+            gameModeForm.Show()
             Me.Close()
         End If
     End Sub
+
 
     Private Sub btnJeda_Click(sender As Object, e As EventArgs) Handles btnJeda.Click
         SoundHelper.PlayButtonSound()
