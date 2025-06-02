@@ -11,6 +11,7 @@ Public Class GameModeForm
     Public selectedDifficulty As String = ""
     Public selectedMode As String = ""
 
+
     Private Sub GameModeForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         ApplyButtonHoverEffects(Me)
@@ -68,7 +69,7 @@ Public Class GameModeForm
     End Sub
 
     Private Sub btnTantangan_Click(sender As Object, e As EventArgs) Handles btnTantangan.Click
-        selectedMode = "Petualang"
+        selectedMode = "Tantangan"
         ButtonEffects.AturAktif(btnTantangan, New List(Of Button) From {btnKlasik, btnWaktu, btnTantangan})
     End Sub
 
