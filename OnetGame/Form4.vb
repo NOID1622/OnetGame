@@ -39,14 +39,34 @@ Public Class ScoreForm
                         Dim table As New DataTable()
                         adapter.Fill(table)
 
-                        ' Tambah kolom nomor urut
                         table.Columns.Add("No", GetType(Integer))
                         For i As Integer = 0 To table.Rows.Count - 1
                             table.Rows(i)("No") = i + 1
                         Next
-
-                        ' Pindahkan kolom "No" ke kolom pertama
                         table.Columns("No").SetOrdinal(0)
+                        If table.Columns.Contains("tanggal") Then
+                            table.Columns.Remove("tanggal")
+                        End If
+
+                        'table.Columns("No").ColumnName = "No"
+                        table.Columns("nama").ColumnName = "Nama"
+                        table.Columns("skor").ColumnName = "Score"
+                        table.Columns("tingkat_kesulitan").ColumnName = "Kesulitan"
+                        table.Columns("mode_permainan").ColumnName = "Mode"
+                        DataGridView1.DataSource = table
+                        DataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+                        DataGridView1.Columns("No").DisplayIndex = 0
+                        DataGridView1.Columns("Nama").DisplayIndex = 1
+                        DataGridView1.Columns("Score").DisplayIndex = 2
+                        DataGridView1.Columns("Kesulitan").DisplayIndex = 3
+                        DataGridView1.Columns("Mode").DisplayIndex = 4
+
+                        'table.Columns.Add("No", GetType(Integer))
+                        'For i As Integer = 0 To table.Rows.Count - 1
+                        '    table.Rows(i)("No") = i + 1
+                        'Next
+
+                        'table.Columns("No").SetOrdinal(0)
 
                         DataGridView1.DataSource = table
                         DataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill

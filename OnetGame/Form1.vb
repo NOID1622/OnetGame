@@ -52,20 +52,19 @@ Public Class MainMenuForm
 
     ' === Tutup aplikasi saat klik tombol keluar ===
     Private Sub extBtn_Click(sender As Object, e As EventArgs) Handles extBtn.Click
-        isExiting = True
         Application.Exit()
     End Sub
 
     ' === Tangani penutupan form ===
-    Private Sub MainMenuForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        If e.CloseReason = CloseReason.UserClosing Then
-            isExiting = True ' Supaya keluar aplikasi
-        Else
-            If Not isExiting Then
-                e.Cancel = True
-                Me.Hide()
-            End If
-        End If
-    End Sub
+    'Private Sub MainMenuForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+    '    If e.CloseReason = CloseReason.UserClosing Then
+    '        isExiting = True ' Supaya keluar aplikasi
+    '    Else
+    '        If Not isExiting Then
+    '            e.Cancel = True
+    '            Me.Hide()
+    '        End If
+    '    End If
+    'End Sub
 
 End Class
