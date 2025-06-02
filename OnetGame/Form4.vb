@@ -1,5 +1,7 @@
 ﻿Imports System.Text.Json
 Imports System.IO
+Imports MySql.Data.MySqlClient
+Imports System.Data.SQLite
 
 Public Class ScoreForm
     Public mainMenuRef As Form
@@ -12,16 +14,38 @@ Public Class ScoreForm
         DataGridView1.setcellTransparent()
     End Sub
 
-    Private Sub LoadLeaderboard()
-        Dim path As String = "resources/leaderboard.json"
 
-        If File.Exists(path) Then
-            Dim jsonString = File.ReadAllText(path)
-            Dim daftarSkor As List(Of CreateJson) = JsonSerializer.Deserialize(Of List(Of CreateJson))(jsonString)
-            DataGridView1.DataSource = daftarSkor
-        End If
+    Public Sub LoadLeaderboard()
+        Dim dbPath As String = "resources/leaderboard.db"
+        Dim connectionString As String = $"Data Source={dbPath};Version=3;"
+        Dim query As String = "SELECT nama, skor, tingkat_kesulitan, mode_permainan, tanggal FROM leaderboard ORDER BY skor DESC"
 
-        DataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+        Try
+            Using conn As New SQLiteConnection(connectionString)
+                conn.Open()
+
+                Using cmd As New SQLiteCommand(query, conn)
+                    Using adapter As New SQLiteDataAdapter(cmd)
+                        Dim table As New DataTable()
+                        adapter.Fill(table)
+
+                        ' Tambah kolom nomor urut
+                        table.Columns.Add("No", GetType(Integer))
+                        For i As Integer = 0 To table.Rows.Count - 1
+                            table.Rows(i)("No") = i + 1
+                        Next
+
+                        ' Pindahkan kolom "No" ke kolom pertama
+                        table.Columns("No").SetOrdinal(0)
+
+                        DataGridView1.DataSource = table
+                        DataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+                    End Using
+                End Using
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("Gagal memuat leaderboard: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 
     Private Sub btnKembali_Click(sender As Object, e As EventArgs) Handles btnKembali.Click
@@ -37,4 +61,5 @@ Public Class ScoreForm
             Application.Exit()
         End If
     End Sub
+
 End Class
