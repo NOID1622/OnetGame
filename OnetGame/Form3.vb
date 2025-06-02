@@ -47,6 +47,11 @@ Public Class GameForm
     Private langkahSejakAcakUlang As Integer = 0
     Private langkahUntukAcakUlang As Integer = 0
 
+    'bantuan
+
+    Private bantuanTersisa As Integer = 0
+
+
     ' === Form Load ===
     Private Sub GameForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ApplyButtonHoverEffects(Me)
@@ -56,7 +61,7 @@ Public Class GameForm
 
 
         KonfigurasiTingkatKesulitan()
-        kartuTimer.Interval = CInt(waktuTunggu * 1000)
+        kartuTimer.Interval = CInt(waktuTunggu * 250)
         AddHandler kartuTimer.Tick, AddressOf KartuTimer_Tick
 
         gameTimer.Interval = 1000
@@ -115,22 +120,43 @@ Public Class GameForm
     '            If ModePermainan = "Waktu" Then waktuAwalCountdown = TimeSpan.FromMinutes(3)
     '    End Select
     'End Sub
+    'Private Sub KonfigurasiTingkatKesulitan()
+    '    Select Case TingkatKesulitan
+    '        Case "Mudah"
+    '            jumlahKolom = 3 : jumlahBaris = 4 : totalPasangan = 6 : waktuTunggu = 1.5
+    '            If ModePermainan = "Waktu" Then waktuAwalCountdown = TimeSpan.FromMinutes(1)
+    '            If ModePermainan = "Tantangan" Then langkahUntukAcakUlang = 3
+    '        Case "Sedang"
+    '            jumlahKolom = 4 : jumlahBaris = 4 : totalPasangan = 8 : waktuTunggu = 1.0
+    '            If ModePermainan = "Waktu" Then waktuAwalCountdown = TimeSpan.FromMinutes(2)
+    '            If ModePermainan = "Tantangan" Then langkahUntukAcakUlang = 6
+    '        Case "Sulit"
+    '            jumlahKolom = 6 : jumlahBaris = 6 : totalPasangan = 18 : waktuTunggu = 0.8
+    '            If ModePermainan = "Waktu" Then waktuAwalCountdown = TimeSpan.FromMinutes(3)
+    '            If ModePermainan = "Tantangan" Then langkahUntukAcakUlang = 12
+    '    End Select
+    'End Sub
+
     Private Sub KonfigurasiTingkatKesulitan()
         Select Case TingkatKesulitan
             Case "Mudah"
                 jumlahKolom = 3 : jumlahBaris = 4 : totalPasangan = 6 : waktuTunggu = 1.5
                 If ModePermainan = "Waktu" Then waktuAwalCountdown = TimeSpan.FromMinutes(1)
                 If ModePermainan = "Tantangan" Then langkahUntukAcakUlang = 3
+                bantuanTersisa = 1
             Case "Sedang"
                 jumlahKolom = 4 : jumlahBaris = 4 : totalPasangan = 8 : waktuTunggu = 1.0
                 If ModePermainan = "Waktu" Then waktuAwalCountdown = TimeSpan.FromMinutes(2)
                 If ModePermainan = "Tantangan" Then langkahUntukAcakUlang = 6
+                bantuanTersisa = 2
             Case "Sulit"
                 jumlahKolom = 6 : jumlahBaris = 6 : totalPasangan = 18 : waktuTunggu = 0.8
                 If ModePermainan = "Waktu" Then waktuAwalCountdown = TimeSpan.FromMinutes(3)
                 If ModePermainan = "Tantangan" Then langkahUntukAcakUlang = 12
+                bantuanTersisa = 3
         End Select
     End Sub
+
 
     ' === Skin / Cover Management ===
     Public Sub SetSkinFolder(folderName As String)
@@ -239,7 +265,6 @@ Public Class GameForm
             '    If langkahSejakAcakUlang >= langkahUntukAcakUlang Then
             '        langkahSejakAcakUlang = 0
             '        AcakUlangKartu()
-            '        MessageBox.Show("Kartu diacak ulang!", "Tantangan", MessageBoxButtons.OK, MessageBoxIcon.Information)
             '    End If
             'End If
             If ModePermainan = "Tantangan" Then
@@ -363,8 +388,35 @@ Public Class GameForm
 
     Private Sub btnBantuan_Click(sender As Object, e As EventArgs) Handles btnBantuan.Click
         SoundHelper.PlayButtonSound2()
-        MessageBox.Show("Temukan semua pasangan gambar dengan mengingat letaknya. Selamat bermain!", "Petunjuk")
+        If bantuanTersisa <= 0 Then
+            MessageBox.Show("Bantuan sudah habis!", "Bantuan", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            btnBantuan.Enabled = False
+            Return
+        End If
+        bantuanTersisa -= 1
+        For Each pb As PictureBox In kartuArray
+            If Not kartuSelesai.Contains(pb) Then
+                pb.Image = CType(pb.Tag, Image)
+            End If
+        Next
+
+        Dim t As New Timer With {.Interval = 1000}
+        AddHandler t.Tick, Sub()
+                               For Each pb As PictureBox In kartuArray
+                                   If Not kartuSelesai.Contains(pb) AndAlso Not kartuTerbuka.Contains(pb) Then
+                                       pb.Image = coverImage
+                                   End If
+                               Next
+                               t.Stop()
+                               t.Dispose()
+                           End Sub
+        t.Start()
+
+        If bantuanTersisa = 0 Then
+            btnBantuan.Enabled = False
+        End If
     End Sub
+
 
     ' === Skor dan Penyimpanan ===
     Private Function HitungSkor() As Integer

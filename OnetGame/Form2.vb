@@ -12,6 +12,9 @@ Public Class GameModeForm
     Public selectedMode As String = ""
 
 
+    'Private bantuanTersisa As Integer = 0
+
+
     Private Sub GameModeForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         ApplyButtonHoverEffects(Me)
