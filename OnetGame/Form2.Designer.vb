@@ -44,7 +44,7 @@ Partial Class GameModeForm
         Label1.AutoSize = True
         Label1.BackColor = Color.Transparent
         Label1.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label1.Location = New Point(394, 64)
+        Label1.Location = New Point(394, 45)
         Label1.Name = "Label1"
         Label1.Size = New Size(178, 28)
         Label1.TabIndex = 0
@@ -226,9 +226,9 @@ Partial Class GameModeForm
         peringatanNama.ForeColor = Color.Yellow
         peringatanNama.Location = New Point(131, 431)
         peringatanNama.Name = "peringatanNama"
-        peringatanNama.Size = New Size(250, 20)
+        peringatanNama.Size = New Size(187, 20)
         peringatanNama.TabIndex = 12
-        peringatanNama.Text = "TOLONG MASUKKAN NAMA ANDA"
+        peringatanNama.Text = "MASUKKAN NAMA ANDA"
         peringatanNama.Visible = False
         ' 
         ' peringatanmode
@@ -239,22 +239,22 @@ Partial Class GameModeForm
         peringatanmode.ForeColor = Color.Yellow
         peringatanmode.Location = New Point(394, 272)
         peringatanmode.Name = "peringatanmode"
-        peringatanmode.Size = New Size(184, 17)
+        peringatanmode.Size = New Size(163, 17)
         peringatanmode.TabIndex = 13
-        peringatanmode.Text = "TOLONG MODE PERMAINAN"
+        peringatanmode.Text = "PILIH MODE PERMAINAN"
         peringatanmode.Visible = False
         ' 
         ' peringatantingkat
         ' 
         peringatantingkat.AutoSize = True
         peringatantingkat.BackColor = Color.Transparent
-        peringatantingkat.Font = New Font("Segoe UI", 6F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, CByte(0))
+        peringatantingkat.Font = New Font("Segoe UI", 8F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, CByte(0))
         peringatantingkat.ForeColor = Color.Yellow
-        peringatantingkat.Location = New Point(394, 92)
+        peringatantingkat.Location = New Point(386, 83)
         peringatantingkat.Name = "peringatantingkat"
-        peringatantingkat.Size = New Size(178, 12)
+        peringatantingkat.Size = New Size(186, 19)
         peringatantingkat.TabIndex = 14
-        peringatantingkat.Text = "TOLONG PILIH TINGKAT KESULITAN"
+        peringatantingkat.Text = "PILIH TINGKAT KESULITAN"
         peringatantingkat.Visible = False
         ' 
         ' GameModeForm
