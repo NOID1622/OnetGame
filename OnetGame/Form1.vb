@@ -5,6 +5,7 @@ Public Class MainMenuForm
     Public Property SelectedSkinFolder As String = "images" ' Default folder skin
 
     Private isExiting As Boolean = False
+    Dim dbManager As New dbManager()
 
     Private Sub MainMenuForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -12,6 +13,11 @@ Public Class MainMenuForm
         SoundHelper.InitPlayer(Me)
         ApplyButtonHoverEffects(Me)
         SoundHelper.PlayBackgroundMusic()
+        dbManager.InitDatabase()
+        'dbManager.TesInsert()
+
+        Me.MaximizeBox = False
+
     End Sub
 
     ' === Buka GameModeForm ===
@@ -20,7 +26,7 @@ Public Class MainMenuForm
 
         Dim gmForm As New GameModeForm()
         gmForm.mainMenuRef = Me
-        gmForm.SelectedSkinFolder = Me.SelectedSkinFolder ' TERUSKAN SKIN YANG DIPILIH
+        gmForm.SelectedSkinFolder = Me.SelectedSkinFolder
         gmForm.Show()
         Me.Hide()
     End Sub
@@ -40,7 +46,7 @@ Public Class MainMenuForm
         Me.Hide()
 
         Dim settForm As New SettingForm()
-        settForm.SelectedSkinFolder = Me.SelectedSkinFolder ' TERUSKAN SKIN SAAT INI KE SETTING
+        settForm.SelectedSkinFolder = Me.SelectedSkinFolder
 
         settForm.ShowDialog()
 
@@ -55,16 +61,5 @@ Public Class MainMenuForm
         Application.Exit()
     End Sub
 
-    ' === Tangani penutupan form ===
-    'Private Sub MainMenuForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-    '    If e.CloseReason = CloseReason.UserClosing Then
-    '        isExiting = True ' Supaya keluar aplikasi
-    '    Else
-    '        If Not isExiting Then
-    '            e.Cancel = True
-    '            Me.Hide()
-    '        End If
-    '    End If
-    'End Sub
 
 End Class

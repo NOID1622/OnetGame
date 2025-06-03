@@ -73,7 +73,7 @@ Public Class GameForm
 
         KonfigurasiTingkatKesulitan()
 
-        kartuTimer.Interval = CInt(waktuTunggu * 1000)
+        kartuTimer.Interval = CInt(waktuTunggu * 500)
 
         AddHandler kartuTimer.Tick, AddressOf KartuTimer_Tick
 
@@ -185,7 +185,7 @@ Public Class GameForm
 
     Private Sub LoadCoverImage()
         Dim coverPath = Path.Combine(Application.StartupPath, SkinFolder, "cover.png")
-        'MessageBox.Show($"Cover Path: {coverPath}", "Debug Cover Path", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        'MessageBox.Show($"TesCov: {coverPath}", MessageBoxButtons.OK, MessageBoxIcon.Information)
         If File.Exists(coverPath) Then
             coverImage?.Dispose()
             coverImage = Image.FromFile(coverPath)
@@ -388,7 +388,6 @@ Public Class GameForm
 
             MessageBox.Show("Permainan berakhir. Coba lagi lain waktu!", "Menyerah")
 
-            ' Kembali ke GameModeForm
             Dim gameModeForm As New GameModeForm()
             gameModeForm.mainMenuRef = Me.mainMenuRef
             gameModeForm.Show()
@@ -433,7 +432,7 @@ Public Class GameForm
         Next
         Dim durasiBantuan As Integer
 
-        'durasiBantuan = 5
+        'durasiBantuan = 5000
         Select Case TingkatKesulitan
             Case "Mudah"
                 durasiBantuan = 1000
@@ -566,13 +565,9 @@ Public Class GameForm
 
 
     Private Sub AcakUlangKartu()
-        ' Ambil hanya kartu yang belum selesai
         Dim kartuBelumSelesai = kartuArray.Where(Function(pb) Not kartuSelesai.Contains(pb)).ToList()
-        ' Ambil gambar dari kartu yang belum selesai
         Dim gambarBelumSelesai = kartuBelumSelesai.Select(Function(pb) pb.Tag).ToList()
-        ' Acak gambar
         gambarBelumSelesai = gambarBelumSelesai.OrderBy(Function() random.Next()).ToList()
-        ' Set gambar acak ke kartu
         For i = 0 To kartuBelumSelesai.Count - 1
             kartuBelumSelesai(i).Tag = gambarBelumSelesai(i)
             kartuBelumSelesai(i).Image = coverImage
