@@ -69,4 +69,8 @@
         Settings.SelectedSkinFolder = "imagesJoker"
         ButtonEffects.AturAktif(btnJoker, New List(Of Button) From {btnMarvel, btnPokemon, btnJoker})
     End Sub
+
+    Private Sub volumetrackbar_Scroll(sender As Object, e As ScrollEventArgs) Handles volumetrackbar.Scroll
+        SoundHelper.SetGlobalVolume(volumetrackbar.Value)
+    End Sub
 End Class
