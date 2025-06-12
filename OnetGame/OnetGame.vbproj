@@ -28,6 +28,27 @@
     <None Remove="images2\7.png" />
     <None Remove="images2\8.png" />
     <None Remove="images2\9.png" />
+    <None Remove="images2\cover.png" />
+    <None Remove="images2\cover2.png" />
+    <None Remove="imagesJoker\1.png" />
+    <None Remove="imagesJoker\10.png" />
+    <None Remove="imagesJoker\11.png" />
+    <None Remove="imagesJoker\12.png" />
+    <None Remove="imagesJoker\13.png" />
+    <None Remove="imagesJoker\14.png" />
+    <None Remove="imagesJoker\15.png" />
+    <None Remove="imagesJoker\16.png" />
+    <None Remove="imagesJoker\17.png" />
+    <None Remove="imagesJoker\18.png" />
+    <None Remove="imagesJoker\2.png" />
+    <None Remove="imagesJoker\3.png" />
+    <None Remove="imagesJoker\4.png" />
+    <None Remove="imagesJoker\5.png" />
+    <None Remove="imagesJoker\6.png" />
+    <None Remove="imagesJoker\7.png" />
+    <None Remove="imagesJoker\8.png" />
+    <None Remove="imagesJoker\9.png" />
+    <None Remove="imagesJoker\cover.png" />
     <None Remove="sound\backsound.mp3" />
     <None Remove="sound\buttonclick.mp3" />
     <None Remove="sound\correct.mp3" />
@@ -139,6 +160,69 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="images2\9.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images2\cover.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images2\cover2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="imagesJoker\1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="imagesJoker\10.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="imagesJoker\11.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="imagesJoker\12.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="imagesJoker\13.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="imagesJoker\14.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="imagesJoker\15.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="imagesJoker\16.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="imagesJoker\17.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="imagesJoker\18.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="imagesJoker\2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="imagesJoker\3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="imagesJoker\4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="imagesJoker\5.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="imagesJoker\6.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="imagesJoker\7.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="imagesJoker\8.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="imagesJoker\9.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="imagesJoker\cover.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="sound\backsound.mp3">
@@ -260,10 +344,6 @@
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="imagesJoker\" />
   </ItemGroup>
 
 </Project>
